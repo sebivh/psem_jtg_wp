@@ -1,17 +1,9 @@
-body {
-    box-sizing: border-box;
-    height: 100svh;
-}
-
 .map {
+    box-sizing: border-box;
     z-index: 1;
     width: 100%;
     height: 100%;
     border-radius: var(--def-border-radius);
-}
-
-.hero {
-    display: none !important;
 }
 
 .leaflet-top {

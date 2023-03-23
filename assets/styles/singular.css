@@ -49,3 +49,8 @@ h1 {
         width: 800px !important;
     }
 }
+@media screen and (max-width: 1200px) {
+    body {
+        margin-bottom: 162px !important;
+    }
+}

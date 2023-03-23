@@ -47,8 +47,11 @@ class CustomAudioControl {
         //Adjust width of x by half of the Playheads with
         x -= this.playbackhead.offsetWidth / 2;
         this.playbackhead.style.transform = "translateX(" + x + "px)";
-        if (this.paused())
+        if (this.paused()) {
             this.pause();
+        } else {
+            this.play();
+        }
     }
 
     setCurrentTimeFromClick(e) {
