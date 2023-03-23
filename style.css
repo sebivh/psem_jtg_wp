@@ -1,0 +1,83 @@
+/*
+Theme Name: jtg Wordpress Theme
+Author: Leopoldinum Passau
+Author URI: https://leopoldinum-passau.de
+Description: Main Theme for the Juedisch To GO website of the Leopoldinum W-Seminar 2022/24
+Version: 0.1
+*/
+
+
+/*Colors.co Pallet https://coolors.co/palette/7400b8-6930c3-5e60ce-5390d9-4ea8de-48bfe3-56cfe1-64dfdf-72efdd-80ffdb */
+
+:root {
+    /*--def-font-family: 'Rubik', sans-serif;*/
+    --def-font-family: 'Montserrat', sans-serif;
+    --def-font-line-height-normal: 1.7em;
+    --def-font-line-height-large: 1.2em;
+    --def-font-line-height-small: 1.2em;
+    --def-border-radius: 20px;
+    --def-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    --def-accent-gradient: linear-gradient(90deg, hsla(278, 100%, 36%, 1) 0%, hsla(263, 60%, 48%, 1) 11.11111111111111%, hsla(239, 53%, 59%, 1) 22.22222222222222%, hsla(213, 64%, 59%, 1) 33.33333333333333%, hsla(203, 69%, 59%, 1) 44.44444444444444%, hsla(194, 73%, 59%, 1) 55.55555555555556%, hsla(188, 70%, 61%, 1) 66.66666666666666%, hsla(180, 66%, 63%, 1) 77.77777777777777%, hsla(171, 80%, 69%, 1) 88.88888888888889%, hsla(163, 100%, 75%, 1) 100%);
+}
+
+@media screen and (min-width: 1200px) {
+     :root {
+        --def-text-font-size-normal: 1.3rem !important;
+        --def-font-line-height-normal: 1.4em !important;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+body {
+    font-size: var(--def-text-font-size-normal);
+    font-family: var(--def-font-family);
+    font-style: normal;
+    font-weight: 400;
+    background-color: var(--def-page-color);
+    color: var(--def-text-color-normal);
+    padding: var(--def-spacing);
+    margin: 0;
+}
+
+.site-content-container {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: var(--def-spacing);
+    line-height: var(--def-font-line-height-normal);
+}
+
+.background>* {
+    position: fixed;
+    width: 500px;
+    z-index: -1;
+}
+
+.background>*:nth-child(1) {
+    top: 45vh;
+    left: 30vw;
+}
+
+.background>*:nth-child(2) {
+    top: 10vh;
+    left: 5vw;
+}
+
+.background>*:nth-child(3) {
+    bottom: -10vh;
+    right: 10vw;
+}
+
+.background>*:nth-child(4) {
+    top: 20vh;
+    right: -5vw;
+}
+
+.background>*:nth-child(5) {
+    top: 60vh;
+    left: -10vw;
+}

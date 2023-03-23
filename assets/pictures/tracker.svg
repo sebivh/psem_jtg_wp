@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1024 1024" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs/>
+<clipPath id="ArtboardFrame">
+<rect height="1024" width="1024" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Ebene-1" vectornator:layerName="Ebene 1">
+<path d="M512 54.5C259.33 54.5 54.5 259.33 54.5 512C54.5 764.67 259.33 969.5 512 969.5C764.67 969.5 969.5 764.67 969.5 512C969.5 259.33 764.67 54.5 512 54.5ZM512 132.239C721.736 132.239 891.761 302.264 891.761 512C891.761 721.736 721.736 891.761 512 891.761C302.264 891.761 132.239 721.736 132.239 512C132.239 302.264 302.264 132.239 512 132.239Z" fill="#000000" fill-rule="nonzero" opacity="0.992739" stroke="none"/>
+<path d="M512 80L512 0" fill="none" opacity="0.992739" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="89.6191"/>
+<path d="M512 1024L512 944" fill="none" opacity="0.992739" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="89.6191"/>
+<path d="M944.001 512.24L1024 511.76" fill="none" opacity="0.992739" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="89.6191"/>
+<path d="M0 512.24L79.9986 511.76" fill="none" opacity="0.992739" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="89.6191"/>
+<path d="M337 512C337 415.35 415.35 337 512 337C608.65 337 687 415.35 687 512C687 608.65 608.65 687 512 687C415.35 687 337 608.65 337 512Z" fill="#000000" fill-rule="nonzero" opacity="0.992739" stroke="none"/>
+</g>
+</svg>

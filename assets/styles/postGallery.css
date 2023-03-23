@@ -1,0 +1,62 @@
+.postgallery {
+    --gallery-height: 1000px;
+    position: relative;
+    box-sizing: border-box;
+    border: unset;
+    background: unset;
+    backdrop-filter: unset;
+    box-shadow: unset;
+    background-color: none;
+    width: 100%;
+    height: var(--gallery-height);
+}
+
+.postwrapper {
+    display: flex;
+    gap: 150px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.postwrapper.animate {
+    transition: transform ease-in-out 400ms;
+}
+
+.postgallery .arrow {
+    --arrow-size: 100px;
+    border: 0;
+    box-sizing: border-box;
+    width: var(--arrow-size);
+    height: var(--arrow-size);
+    border-radius: 300px;
+    background: rgba(166, 166, 166, 0.2);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(2px);
+    padding: calc(0.5 * var(--def-spacing));
+    position: absolute;
+    transition: opacity 500ms ease;
+    top: calc(0.5 * (var(--gallery-height) - var(--arrow-size)));
+    z-index: 10;
+    pointer-events: all;
+}
+
+.postgallery .arrow img {
+    width: 100%;
+    height: 100%;
+}
+
+.postgallery .arrow.inactive {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.postgallery .left {
+    transform: scaleX(-1);
+    left: 0px;
+}
+
+.postgallery .right {
+    right: 0px;
+}

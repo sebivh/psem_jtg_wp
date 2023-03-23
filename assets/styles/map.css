@@ -1,0 +1,33 @@
+body {
+    box-sizing: border-box;
+    height: 100svh;
+}
+
+.map {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--def-border-radius);
+}
+
+.hero {
+    display: none !important;
+}
+
+.leaflet-top {
+    transform-origin: top left;
+    transform: scale(var(--map-controlls-size));
+}
+
+.leaflet-top.leaflet-right {
+    transform-origin: top right;
+}
+
+.citySelector {
+    background-color: #fff;
+    border: none;
+}
+
+.citySelectorButton img {
+    margin: 4px;
+}
