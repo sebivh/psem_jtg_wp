@@ -7,8 +7,8 @@ function map_shortcode($atts = [], $content = null, $tag = ''){
 	$properties = shortcode_atts(
 		array(
 			'interactive' => 'true',
-            'width' => '90%',
-            'height' => '80svh',
+            'width' => '100%',
+            'height' => '40svh',
             'overwrite_address' => null,
             'overwrite_zoom' => null,
 		), $atts, $tag
