@@ -33,6 +33,8 @@ function setUpMap() {
             } else {
                 mapoverwriteAddress = convertAddress(overwriteAddress);
             }
+        } else {
+            mapPosition = overwriteAddress;
         }
     }
     if(overwriteZoom != null) {
