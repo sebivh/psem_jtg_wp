@@ -2,8 +2,6 @@
 
 wp_enqueue_style('singular-style');
 wp_enqueue_style('location-style');
-wp_enqueue_style('component-audio-style');
-wp_enqueue_script('component-audio-script');
 
 get_header();
 ?>

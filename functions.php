@@ -35,6 +35,11 @@ include_once('functions/shortcodes/postgallery.php');
  */
 include_once('functions/shortcodes/map.php');
 
+/**
+ * Registers the Function for appending the Custom Audio Controll Assets
+ */
+include_once('functions/audio.php');
+
 function enqueue_styles() {
 	wp_enqueue_style("main-style");
 	wp_enqueue_style("header-style");
