@@ -34,7 +34,7 @@
     margin-top: calc(var(--def-spacing) / 2);
 }
 
-.meta-data-display {
+.metaDataDisplay {
     display: flex;
     flex-direction: column;
     width: 100%;

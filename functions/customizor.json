@@ -1,0 +1,134 @@
+[
+    {
+        "handle": "def_spacing",
+        "default": "25px",
+        "lable": "Standard Spacing",
+        "section": "sec_pagestyle"
+    },
+    {
+        "handle": "def_text_color_normal",
+        "default": "#000000",
+        "lable": "Text Farbe",
+        "section": "sec_text"
+    },
+    {
+        "handle": "def_text_color_accent",
+        "default": "#ffffff",
+        "lable": "Standard Akzent Text Farbe",
+        "section": "sec_text"
+    },
+    {
+        "handle": "def-font-size-normal",
+        "default": "14px",
+        "lable": "Normale Text Größe",
+        "section": "sec_text"
+    },
+    {
+        "handle": "Mittlere Text Größe",
+        "default": "16px",
+        "lable": "Standard Spacing",
+        "section": "sec_text"
+    },
+    {
+        "handle": "def-font-size-large",
+        "default": "calc(var(--def-text-font-size-normal) * 4)",
+        "lable": "Große Text Größe",
+        "section": "sec_text"
+    },
+    {
+        "handle": "def-font-size-small",
+        "default": "10px",
+        "lable": "Kleine Text Größe",
+        "section": "sec_text"
+    },
+    {
+        "handle": "def-link-color",
+        "default": "#000000",
+        "lable": "Link Farbe",
+        "section": "sec_text"
+    },
+    {
+        "handle": "def-link-color-visited",
+        "default": "#FF00FF",
+        "lable": "Link Farbe (Besucht)",
+        "section": "sec_text"
+    },
+    {
+        "handle": "def-page-color",
+        "default": "#FFFFFF",
+        "lable": "Standard Seiten Farbe",
+        "section": "sec_pagestyle"
+    },
+    {
+        "handle": "def-background-color-dark",
+        "default": "#000000",
+        "lable": "Standard Seiten Farbe Dunkel",
+        "section": "sec_pagestyle"
+    },
+    {
+        "handle": "nav-logo-background",
+        "default": "#6930c3cc",
+        "lable": "Logo Hintergrund",
+        "section": "sec_nav"
+    },
+    {
+        "handle": "nav-logo-text-color",
+        "default": "#FFFFFF",
+        "lable": "Logo Text Farbe",
+        "section": "sec_nav"
+    },
+    {
+        "handle": "nav-logo-text-font-size",
+        "default": "var(--def-font-size-large)",
+        "lable": "Nav Text Farbe",
+        "section": "sec_nav"
+    },
+    {
+        "handle": "nav-burger-size",
+        "default": "1",
+        "lable": "Burger Größe",
+        "section": "sec_nav"
+    },
+    {
+        "handle": "nav-link-list-font-size",
+        "default": "var(--def-font-size-large)",
+        "lable": "Nav Linklist Größe",
+        "section": "sec_nav"
+    },
+    {
+        "handle": "nav-link-list-background",
+        "default": "#7400b8cc",
+        "lable": "Link List Hintergrundfarbe",
+        "section": "sec_nav"
+    },
+    {
+        "handle": "nav-link-list-text-color",
+        "default": "#FFFFFF",
+        "lable": "Linklist Text Farbe",
+        "section": "sec_nav"
+    },
+    {
+        "handle": "map-marker-size",
+        "default": "3",
+        "lable": "Map Marker Größe",
+        "section": "sec_map"
+    },
+    {
+        "handle": "map-controlls-size",
+        "default": "2",
+        "lable": "Conrtoll Size",
+        "section": "sec_map"
+    },
+    {
+        "handle": "map-location-arrow-size",
+        "default": "1",
+        "lable": "Location Pfeil Größe",
+        "section": "sec_map"
+    },
+    {
+        "handle": "set-map-selectable-cities",
+        "default": "[{\"title\":\"Passau\", \"address\":\"[48.57390609055261, 13.460523755393428]\"}]",
+        "lable": "Selectable Städte",
+        "section": "sec_map"
+    }
+]
