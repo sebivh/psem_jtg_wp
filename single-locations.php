@@ -6,7 +6,7 @@ wp_enqueue_style('location-style');
 get_header();
 ?>
 <div class="cover">
-	<span class="title"><?php the_title() ?></span>
+	<h1 class="title"><?php the_title() ?></h1>
 	<?php
 	if(has_post_thumbnail()){
 		the_post_thumbnail();
