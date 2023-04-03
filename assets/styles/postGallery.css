@@ -1,5 +1,5 @@
 .postgallery {
-    --gallery-height: 1000px;
+    --gallery-height: 500px;
     position: relative;
     box-sizing: border-box;
     border: unset;
@@ -9,6 +9,7 @@
     background-color: none;
     width: 100%;
     height: var(--gallery-height);
+    padding: 0;
 }
 
 .postwrapper {
@@ -25,7 +26,7 @@
 }
 
 .postgallery .arrow {
-    --arrow-size: 100px;
+    --arrow-size: 50px;
     border: 0;
     box-sizing: border-box;
     width: var(--arrow-size);

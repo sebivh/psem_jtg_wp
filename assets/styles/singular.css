@@ -18,6 +18,8 @@ h1 {
     padding: var(--def-spacing);
     border-radius: var(--def-border-radius);
     margin: unset;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .wp-block-spacer {
@@ -49,13 +51,13 @@ h1 {
 }
 
 .wp-block-audio {
-    height: 250px;
+    height: 125px;
     width: 100%;
 }
 
 @media screen and (min-width: 1200px) {
     .site-content-container {
-        width: 800px !important;
+        width: 550px !important;
     }
 }
 @media screen and (max-width: 1200px) {

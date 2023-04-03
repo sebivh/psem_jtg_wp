@@ -7,8 +7,8 @@ nav {
     --nav-link-list-brake-line-height: var(--burger-ln-high);
     --burger-margin-bottom: var(--nav-padding);
     --burger-margin-right: var(--nav-padding);
-    --burger-hight: calc(5rem * var(--nav-burger-size));
-    --burger-width: calc(5rem * var(--nav-burger-size));
+    --burger-hight: calc(4rem * var(--nav-burger-size));
+    --burger-width: calc(4rem * var(--nav-burger-size));
     --burger-ln-high: calc(0.1 * var(--burger-hight));
     --burger-padding: calc(0.25 * var(--burger-hight));
 }
@@ -25,12 +25,12 @@ nav {
 
 .hero span {
     text-decoration: none;
-    font-size: 3rem;
+    font-size: 2rem;
     color: black
 }
 
 .hero img {
-    height: 7.5svh;
+    height: 4rem;
 }
 
 @media screen and (max-width: 1200px) {
@@ -74,7 +74,7 @@ nav {
     nav .menu-navbar-container #menu-navbar li {
         border-radius: var(--def-border-radius);
         text-align: right;
-        font-size: var(--nav-link-list-font-size);
+        font-size: 1.5rem;
         line-height: var(--def-font-line-height-large);
         transition: background calc(var(--nav-link-list-transition-speed) / 2) ease;
         width: auto;
@@ -91,15 +91,12 @@ nav {
         display: block;
         box-sizing: border-box;
         width: 100%;
-        padding-inline: 40px;
-        padding-top: 40px;
+        padding-inline: 5px;
+        padding-top: 30px;
     }
     nav .menu-navbar-container #menu-navbar li * {
         color: var(--nav-link-list-text-color);
         text-decoration: none;
-    }
-    nav .menu-navbar-container #menu-navbar li:last-child {
-        margin-bottom: 40px;
     }
     nav .burger {
         all: unset;
@@ -167,6 +164,7 @@ nav {
         height: 100svh;
         width: 25svw;
         padding: var(--def-spacing);
+        z-index: 100;
     }
     .menu-navbar-container #menu-navbar li * {
         color: var(--nav-link-list-text-color);
@@ -205,9 +203,6 @@ nav {
         width: auto;
     }
     /*Changes*/
-    nav {
-        --nav-link-list-font-size: 1.5rem !important;
-    }
     .menu-navbar-container #menu-navbar li a {
         padding-inline: unset;
     }
