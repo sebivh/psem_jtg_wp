@@ -20,7 +20,9 @@ function post_shortcode($atts = [], $content = null, $tag = ''){
 	$o = '<a href="' . get_the_permalink($properties['post_id']) . '" class="post-card">' . PHP_EOL;
 	//Thumbnail if it exists
 	if(has_post_thumbnail($properties['post_id'])) {
+		$o .= '<div class="image-wrapper">' . PHP_EOL;
 		$o .= '<img src="' . get_the_post_thumbnail_url($properties['post_id']) . '" alt="Thumbnail">' . PHP_EOL;
+		$o .= '</div>' . PHP_EOL;
 	}
 	//Content
 	$o .= '<span>' . PHP_EOL;

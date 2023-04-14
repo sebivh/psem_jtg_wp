@@ -1,5 +1,4 @@
 .postgallery {
-    --gallery-height: 500px;
     position: relative;
     box-sizing: border-box;
     border: unset;
@@ -8,8 +7,16 @@
     box-shadow: unset;
     background-color: none;
     width: 100%;
-    height: var(--gallery-height);
+    max-height: 500px;
+    height: 50svh;
+    min-height: 300px;
     padding: 0;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    -webkit-user-drag: none; /* Safari */
+    -ms-user-drag: none; /* IE 10 and IE 11 */
+    user-drag: none; /* Standard syntax */
 }
 
 .postwrapper {
@@ -26,11 +33,12 @@
 }
 
 .postgallery .arrow {
-    --arrow-size: 50px;
     border: 0;
     box-sizing: border-box;
-    width: var(--arrow-size);
-    height: var(--arrow-size);
+    aspect-ratio: 1 / 1;
+    max-width: 70px;
+    width: 12svw;
+    min-width: 30px;
     border-radius: 300px;
     background: rgba(166, 166, 166, 0.2);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -38,14 +46,15 @@
     padding: calc(0.5 * var(--def-spacing));
     position: absolute;
     transition: opacity 500ms ease;
-    top: calc(0.5 * (var(--gallery-height) - var(--arrow-size)));
+    top: 50%;
+    transform: translateY(- var(--arrow-size));
     z-index: 10;
     pointer-events: all;
 }
 
 .postgallery .arrow img {
     width: 100%;
-    height: 100%;
+    aspect-ratio: 1 / 1;
 }
 
 .postgallery .arrow.inactive {

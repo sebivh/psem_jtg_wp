@@ -157,3 +157,9 @@ allCustomControls.forEach(customControl => {
         allCustomControls.get(e.target).update();
     })
 });
+
+registerOnResize(function() {
+    allCustomControls.forEach(customControl => {
+        customControl.update();
+    })
+});

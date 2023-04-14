@@ -1,7 +1,4 @@
 <?php
-add_action('wp_head', 'generateCSSVariables');
-
-
 add_action('customize_register', 'setup_controlls');
 function setup_controlls( WP_Customize_Manager $wp_customize) {
 	
@@ -20,17 +17,56 @@ function setup_controlls( WP_Customize_Manager $wp_customize) {
 
 	//Sets Up Settings and Controlls
 	foreach ($controlls as $controll) {
-		$section_name = 'sec_' . $controll->handle;
-		$wp_customize->add_setting( $section_name, array(
+		$wp_customize->add_setting( 'set-' . $controll->handle, array(
 			'default' =>  $controll->default,
 			'transport' => 'refresh',
 		));
-		$wp_customize->add_control( 'con_' . $controll->handle, array(
-			'label' => $controll->lable,
-			'section' => $controll->section,
-			'settings' => $section_name,
-		));
+
+		switch ($controll->type) {
+			case 'color':
+				createColorControll($wp_customize, $controll);
+				break;
+			case 'range':
+				createRangeControll($wp_customize, $controll);
+				break;
+
+			default:
+				createTextareaControll($wp_customize, $controll);
+				break;
+		}
 	}
+}
+
+function createTextareaControll( WP_Customize_Manager $wp_customize, $controll) {
+	$wp_customize->add_control( 'con-' . $controll->handle, array(
+		'label' => $controll->label,
+		'description' => $controll->description,
+		'section' => $controll->section,
+		'settings' => 'set-' . $controll->handle,
+	));
+}
+function createRangeControll( WP_Customize_Manager $wp_customize, $controll) {
+	$wp_customize->add_control( 'con-' . $controll->handle, array(
+		'type' => 'range',
+		'label' => $controll->label,
+		'description' => $controll->description,
+		'section' => $controll->section,
+		'settings' => 'set-' . $controll->handle,
+		'input_attrs' => array(
+			'min' => $controll->range->min,
+			'max' => $controll->range->max,
+			'step' => $controll->range->step,
+		  ),
+	));
+}
+
+function createColorControll( WP_Customize_Manager $wp_customize, $controll ) {
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'con-' . $controll->handle, array(
+		'label' => $controll->label,
+		'description' => $controll->description,
+		'section' => $controll->section,
+		'settings' => 'set-' . $controll->handle,
+	  ) ) );
 }
 
 function setup_sections( WP_Customize_Manager $wp_customize ) {
@@ -56,41 +92,36 @@ function setup_sections( WP_Customize_Manager $wp_customize ) {
 		'priority' => 40,
 	));
 }
-
 //================USER SELECTED CSS Variables====================
-function generateCSSVariables()
-{
-	?>
-<style>
-	:root {
-		--def-spacing: <?php echo get_theme_mod('set_def_spacing', '25px'); ?>;
-		--def-text-color-normal: <?php echo get_theme_mod('set_def_text_color_normal', '#000000'); ?>;
-		--def-text-color-accent: <?php echo get_theme_mod('set_def_text_color_accent', '#ffffff'); ?>;
-		--def-text-font-size-normal: <?php echo get_theme_mod('set-def-font-size-normal', '14px'); ?>;
-		--def-text-font-size-medium: <?php echo get_theme_mod('set-def-font-size-medium', '16px'); ?>;
-		--def-text-font-size-large: <?php echo get_theme_mod('set-def-font-size-large', 'calc(var(--def-text-font-size-normal) * 4)'); ?>;
-		--def-text-font-size-small: <?php echo get_theme_mod('set-def-font-size-small', '10px'); ?>;
-		--def-link-color: <?php echo get_theme_mod('set-def-link-color', '#000000'); ?>;
-		--def-link-color-visited: <?php echo get_theme_mod('set-def-link-color-visited', '#FF00FF'); ?>;
-		--def-page-color: <?php echo get_theme_mod('set-def-page-color', '#FFFFFF'); ?>;
-		--def-background-color: <?php echo get_theme_mod('set-def-background-color', '#FFFFFF'); ?>;
-		--def-background-color-dark: <?php echo get_theme_mod('set-def-background-color-dark', '#000000'); ?>;
+add_action('wp_head', 'generateCSSVariables');
+function generateCSSVariables() {
+
+	/**
+	 * 	Path of the JSON file where the Customizor is Configured
+	 *  @var string */
+	$datafile = get_stylesheet_directory() . '/functions/customizor.json';
+
+	if( ! file_exists($datafile)) {
+		return;
 	}
-	nav {
-		--nav-logo-background: <?php echo get_theme_mod('set-nav-logo-background', '#6930c3cc'); ?>;
-		--nav-logo-text-color: <?php echo get_theme_mod('set-nav-logo-text-color', '#FFFFFF'); ?>;
-		--nav-logo-text-font-size: <?php echo get_theme_mod('set-nav-logo-text-font-size', 'var(--def-font-size-large)'); ?>;
-		--nav-burger-size: <?php echo get_theme_mod('set-nav-burger-size', '1'); ?>;
-		--nav-link-list-font-size: <?php echo get_theme_mod('set-nav-link-list-font-size', 'var(--def-font-size-large)'); ?>;
-		--nav-link-list-background: <?php echo get_theme_mod('set-nav-link-list-background', '#6930c3cc'); ?>;
-		--nav-link-list-background-hover: <?php echo get_theme_mod('set-nav-link-list-background-hover', '#7400b8cc'); ?>;
-		--nav-link-list-text-color: <?php echo get_theme_mod('con_set_nav_link_list_text_color', '#FFFFFF'); ?>;
+
+	$controlls = json_decode( file_get_contents( $datafile));
+
+	echo '<style>' . PHP_EOL;
+	echo ':root {' . PHP_EOL;
+
+	//Prints all Controll in CSS
+	foreach ($controlls as $controll) {
+
+		$output = get_theme_mod('set-' . $controll->handle, $controll->default);
+
+		if( ! is_null($controll->outputSuffix)) {
+			$output .= $controll->outputSuffix;
+		}
+
+		echo '--' . $controll->handle . ':' . $output . ';' . PHP_EOL;
 	}
-	.map {
-		--map-marker-size: <?php echo get_theme_mod('set-map-marker-size', '3'); ?>;
-		--map-controlls-size: <?php echo get_theme_mod('set-map-controlls-size', '2'); ?>;
-		--map-location-arrow-size: <?php echo get_theme_mod('set-map-location-arrow-size', '1'); ?>;
-	}
-</style>
-<?php
+	
+	echo '}' . PHP_EOL;
+	echo '</style>' . PHP_EOL;
 }

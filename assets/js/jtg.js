@@ -46,3 +46,19 @@ document.onreadystatechange = function () {
         }
     }
 }
+
+var resizeFunctions = [];
+
+/**
+ * 
+ * @param {functions} func Function to be registered for execution once The Window size changed
+ */
+function registerOnResize(func) {
+    resizeFunctions.push(func);
+}
+
+addEventListener("resize", function () {
+    resizeFunctions.forEach(func => {
+        func();
+    });
+});

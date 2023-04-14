@@ -1,4 +1,4 @@
-const postCardSpeed = 2;
+const postCardSpeed = 1;
 
 var gallery = null;
 var posts = null;
@@ -7,6 +7,7 @@ var rightArrow = null;
 var leftArrow = null;
 
 registerOnLoad(setUpGallery);
+registerOnResize(stopGalleryManipulation);
 
 var mouseDown = false;
 function setUpGallery() {
@@ -35,19 +36,18 @@ function setUpGallery() {
         stopGalleryManipulation();
     }
     //Handlers for Mouse Support
-    // gallery.onmousedown = function(e) {
-    //     mouseDown = true;
-    //     startGalleryManipulation(e.screenX);
-    // }
-    // gallery.onmousemove = function(e) {
-    //     if(mouseDown)
-    //         updateGalleryManipulation(e.screenX);
-    // }
-    // gallery.onmouseup = function() {
-    //     mouseDown = false;
-    //     startGalleryManipulation();
-    // }
-
+    gallery.onmousedown = function(e) {
+        mouseDown = true;
+        startGalleryManipulation(e.screenX);
+    }
+    gallery.onmousemove = function(e) {
+        if(mouseDown)
+            updateGalleryManipulation(e.screenX);
+    }
+    document.onmouseup = function() {
+        mouseDown = false;
+        stopGalleryManipulation();
+    }
 }
 
 registerOnComplete(function() {

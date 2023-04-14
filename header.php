@@ -7,13 +7,6 @@
         <title><? echo get_bloginfo('name') ?></title>
         <!--Meta-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--Fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-        <style> @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap'); </style>
-        <style> @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap'); </style>
     </head>
     <body>
         <nav>
@@ -25,15 +18,16 @@
                     "container" => "div",
                     "menu_class" => "header-menu-navbar-container",
                     "item_spacing" => "discard",
-                    "link_after" => "<hr>"
+                    "link_before" => "<span>",
+                    "link_after" => "</span><hr>"
                 )
             );
             echo PHP_EOL;
             ?>
             <button class="burger" aria-label="Burger" aria-expanded="true" tabindex="0">
-                <div class="burger-ln" id="ln1"></div>
-                <div class="burger-ln" id="ln2"></div>
-                <div class="burger-ln" id="ln3"></div>
+                <div class="burger-ln"></div>
+                <div class="burger-ln"></div>
+                <div class="burger-ln"></div>
             </button>
         </nav>
             <?php

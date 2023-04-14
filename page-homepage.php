@@ -1,4 +1,5 @@
 <?php
+
 wp_enqueue_style('singular-style');
 
 

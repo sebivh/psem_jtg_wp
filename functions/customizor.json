@@ -1,134 +1,164 @@
 [
     {
-        "handle": "def_spacing",
+        "handle": "def-spacing",
         "default": "25px",
-        "lable": "Standard Spacing",
-        "section": "sec_pagestyle"
+        "label": "Standard Spacing",
+        "description": "Stellt einen richtwert für den Abstand zwischen 2 Elementen da",
+        "section": "sec_pagestyle",
+        "type": "text"
     },
     {
-        "handle": "def_text_color_normal",
+        "handle": "def-text-color-normal",
         "default": "#000000",
-        "lable": "Text Farbe",
-        "section": "sec_text"
-    },
-    {
-        "handle": "def_text_color_accent",
-        "default": "#ffffff",
-        "lable": "Standard Akzent Text Farbe",
-        "section": "sec_text"
+        "label": "Text Farbe",
+        "description": "Die Farbe die der Normale Text auf der Seite hat",
+        "section": "sec_text",
+        "type": "color"
     },
     {
         "handle": "def-font-size-normal",
-        "default": "14px",
-        "lable": "Normale Text Größe",
-        "section": "sec_text"
-    },
-    {
-        "handle": "Mittlere Text Größe",
-        "default": "16px",
-        "lable": "Standard Spacing",
-        "section": "sec_text"
-    },
-    {
-        "handle": "def-font-size-large",
-        "default": "calc(var(--def-text-font-size-normal) * 4)",
-        "lable": "Große Text Größe",
-        "section": "sec_text"
-    },
-    {
-        "handle": "def-font-size-small",
-        "default": "10px",
-        "lable": "Kleine Text Größe",
-        "section": "sec_text"
+        "default": "1rem",
+        "label": "Normale Text Größe",
+        "description": "Die Größe die der Normale Text auf der Seite hat",
+        "section": "sec_text",
+        "type": "textarea"
     },
     {
         "handle": "def-link-color",
         "default": "#000000",
-        "lable": "Link Farbe",
-        "section": "sec_text"
+        "label": "Link Farbe",
+        "description": "Text Farbe von Links auf der Seite",
+        "section": "sec_text",
+        "type": "color"
     },
     {
         "handle": "def-link-color-visited",
         "default": "#FF00FF",
-        "lable": "Link Farbe (Besucht)",
-        "section": "sec_text"
+        "label": "Link Farbe (Besucht)",
+        "description": "Text Farbe von Links auf die der Nutzer bereits geklickt hat",
+        "section": "sec_text",
+        "type": "color"
     },
     {
         "handle": "def-page-color",
         "default": "#FFFFFF",
-        "lable": "Standard Seiten Farbe",
-        "section": "sec_pagestyle"
-    },
-    {
-        "handle": "def-background-color-dark",
-        "default": "#000000",
-        "lable": "Standard Seiten Farbe Dunkel",
-        "section": "sec_pagestyle"
-    },
-    {
-        "handle": "nav-logo-background",
-        "default": "#6930c3cc",
-        "lable": "Logo Hintergrund",
-        "section": "sec_nav"
-    },
-    {
-        "handle": "nav-logo-text-color",
-        "default": "#FFFFFF",
-        "lable": "Logo Text Farbe",
-        "section": "sec_nav"
-    },
-    {
-        "handle": "nav-logo-text-font-size",
-        "default": "var(--def-font-size-large)",
-        "lable": "Nav Text Farbe",
-        "section": "sec_nav"
+        "label": "Standard Seiten Farbe",
+        "description": "Die Hintergrundfarbe der gesamten Website",
+        "section": "sec_pagestyle",
+        "type": "color"
     },
     {
         "handle": "nav-burger-size",
         "default": "1",
-        "lable": "Burger Größe",
-        "section": "sec_nav"
+        "label": "Burger Größe",
+        "description": "Die Relative Größe des Burger Menüs",
+        "section": "sec_nav",
+        "type": "range",
+        "range": {
+            "min": 1,
+            "max": 10,
+            "step": 0.25
+        }
     },
     {
-        "handle": "nav-link-list-font-size",
-        "default": "var(--def-font-size-large)",
-        "lable": "Nav Linklist Größe",
-        "section": "sec_nav"
+        "handle": "nav-burger-color",
+        "default": "#6930c3cc",
+        "label": "Burger Farbe",
+        "description": "Hintergrundfarbe des Burgers",
+        "section": "sec_nav",
+        "type": "color"
+    },
+    {
+        "handle": "nav-burger-line-color",
+        "default": "#FFFFFF",
+        "label": "Linien Farbe",
+        "description": "Farbe der Linien im Burger",
+        "section": "sec_nav",
+        "type": "color"
     },
     {
         "handle": "nav-link-list-background",
+        "default": "#6930c3cc",
+        "label": "Link List Hintergrundfarbe",
+        "description": "Hintergrund der Link-Liste",
+        "section": "sec_nav",
+        "type": "color"
+    },
+    {
+        "handle": "nav-link-list-background-hover",
         "default": "#7400b8cc",
-        "lable": "Link List Hintergrundfarbe",
-        "section": "sec_nav"
+        "label": "Link List Hintergrundfarbe beim Drüberschweben",
+        "description": "Hintergrund der Link-Liste wenn die Maus über ihr Schwebt",
+        "section": "sec_nav",
+        "type": "color"
     },
     {
         "handle": "nav-link-list-text-color",
         "default": "#FFFFFF",
-        "lable": "Linklist Text Farbe",
-        "section": "sec_nav"
+        "label": "Linklist Text Farbe",
+        "description": "Farbe des Textes in der Link-Liste",
+        "section": "sec_nav",
+        "type": "color"
     },
     {
         "handle": "map-marker-size",
-        "default": "3",
-        "lable": "Map Marker Größe",
-        "section": "sec_map"
+        "default": "1.5",
+        "label": "Map Marker Größe",
+        "description": "",
+        "section": "sec_map",
+        "type": "range",
+        "range": {
+            "min": 1,
+            "max": 10,
+            "step": 0.25
+        }
     },
     {
         "handle": "map-controlls-size",
         "default": "2",
-        "lable": "Conrtoll Size",
-        "section": "sec_map"
+        "label": "Conrtoll Size",
+        "description": "",
+        "section": "sec_map",
+        "type": "range",
+        "range": {
+            "min": 1,
+            "max": 10,
+            "step": 0.25
+        }
     },
     {
         "handle": "map-location-arrow-size",
         "default": "1",
-        "lable": "Location Pfeil Größe",
-        "section": "sec_map"
+        "label": "Location Pfeil Größe",
+        "description": "",
+        "section": "sec_map",
+        "type": "range",
+        "range": {
+            "min": 1,
+            "max": 10,
+            "step": 0.25
+        }
     },
     {
         "handle": "set-map-selectable-cities",
         "default": "[{\"title\":\"Passau\", \"address\":\"[48.57390609055261, 13.460523755393428]\"}]",
-        "lable": "Selectable Städte",
-        "section": "sec_map"
+        "label": "Selectable Städte",
+        "description": "",
+        "section": "sec_map",
+        "type": "textarea"
+    },
+    {
+        "handle": "def-border-radius",
+        "default": "10",
+        "label": "Standard Ecken Radius",
+        "description": "Bestimmt den Normalen Radius aller Ecken",
+        "section": "sec_pagestyle",
+        "outputSuffix": "px",
+        "type": "range",
+        "range": {
+            "min": 0,
+            "max": 50,
+            "step": 5
+        }
     }
 ]

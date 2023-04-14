@@ -10,21 +10,6 @@ Version: 0.1
 /*Colors.co Pallet https://coolors.co/palette/7400b8-6930c3-5e60ce-5390d9-4ea8de-48bfe3-56cfe1-64dfdf-72efdd-80ffdb */
 
 :root {
-    /* Static Style Values */
-    --def-spacing: 1rem;
-    --nav-burger-size: 1;
-    --nav-logo-text-color:#000;
-    --nav-link-list-background:#6930c3cc;
-    --nav-link-list-background-hover:#7400b8cc;
-    --nav-link-list-text-color:#FFFFFF;
-    --map-location-arrow-size: 1.5;
-    --map-marker-size: 1.5;
-    /*--def-font-family: 'Rubik', sans-serif;*/
-    --def-font-family: 'Montserrat', sans-serif;
-    --def-font-line-height-normal: 1.65em;
-    --def-font-line-height-large: 1.2em;
-    --def-font-line-height-small: 1.2em;
-    --def-border-radius: 10px;
     --def-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     --def-accent-gradient: linear-gradient(90deg, hsla(278, 100%, 36%, 1) 0%, hsla(263, 60%, 48%, 1) 11.11111111111111%, hsla(239, 53%, 59%, 1) 22.22222222222222%, hsla(213, 64%, 59%, 1) 33.33333333333333%, hsla(203, 69%, 59%, 1) 44.44444444444444%, hsla(194, 73%, 59%, 1) 55.55555555555556%, hsla(188, 70%, 61%, 1) 66.66666666666666%, hsla(180, 66%, 63%, 1) 77.77777777777777%, hsla(171, 80%, 69%, 1) 88.88888888888889%, hsla(163, 100%, 75%, 1) 100%);
 }
@@ -41,17 +26,26 @@ Version: 0.1
     }
 }
 
+html {
+    background-color: var(--def-page-color);
+}
 
 body {
+    box-sizing: border-box;
     font-size: var(--def-text-font-size-normal);
-    /* font-family: var(--def-font-family); */
     font-family: sans-serif;
-    /* font-style: normal;
-    font-weight: 400; */
-    background-color: var(--def-page-color);
     color: var(--def-text-color-normal);
     padding: var(--def-spacing);
     margin: 0;
+    min-width: 330px;
+}
+
+a {
+    color: var(--def-link-color);
+}
+
+a:visited {
+    color: var(--def-link-color);
 }
 
 .site-content-container {
@@ -60,11 +54,12 @@ body {
     height: 100%;
     padding: 10px;
     line-height: var(--def-font-line-height-normal);
+    overflow-x: hidden;
 }
 
 .background>* {
     position: fixed;
-    width: 500px;
+    width: 200px;
     pointer-events: none;
     z-index: -1;
 }
