@@ -11,6 +11,7 @@ function map_shortcode($atts = [], $content = null, $tag = ''){
             'height' => '40svh',
             'overwrite_address' => null,
             'overwrite_zoom' => null,
+            'location_post_id' => null,
 		), $atts, $tag
 	);
 
@@ -28,7 +29,7 @@ function map_shortcode($atts = [], $content = null, $tag = ''){
     }
 
     //Get Query
-    $query = get_query();
+    $query = get_query( (int) $properties['location_post_id']);
     
     //Get location Data
     $dataList = get_location_data($query);
@@ -109,14 +110,24 @@ function generate_js_structure(string $injection, $interactive, $overwrite_addre
 
 /**
  * Gets a Query for the locations Post Type
+ * 
+ * @param int $post If Specified only this Post will be queried
+ * 
  * @return WP_Query
  */
-function get_query() {
-    return new WP_Query(array(
+function get_query($post) {
+    $properties = array(
         'post_type' => 'locations',
         'post_status' => 'publish',
         'posts_per_page' => -1,
-    ));
+    );
+
+    //If $post is specified adds its id to the search parameters (get_post_status returns false if post dosn't exist, it is used to check if the post Id is valid)
+    if(  $post != 0 && get_post_status( $post )) {
+        $properties['p'] = $post;
+    }
+
+    return new WP_Query($properties);
 }
 
 /**
