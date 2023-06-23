@@ -1,0 +1,77 @@
+.timeline {
+    padding: var(--def-spacing)
+}
+
+.timeline > h1 {
+    margin-bottom: calc(2 * var(--def-spacing));
+}
+
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--def-spacing);
+    position: relative;
+    padding-bottom: calc(2 * var(--def-spacing)) !important;
+}
+
+.arrow {
+    --arrowWidth: 10px;
+    position: absolute;
+    box-sizing: border-box;
+    width: var(--arrowWidth);
+    height: 100%;
+    border-radius: var(--def-border-radius);
+    background-color: black;
+    left: calc(30% - var(--arrowWidth) / 2);
+}
+
+.arrow .arrowHead {
+    --headWidth: 30px;
+    bottom: calc(-1 * var(--def-border-radius));
+    left: calc(-1 * var(--headWidth) + var(--arrowWidth) / 2);
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-left: var(--headWidth) solid transparent;
+    border-right: var(--headWidth) solid transparent;
+    border-top: var(--headWidth) solid black;
+}
+
+.posts-container .tl-post {
+    position: relative;
+    height: 3em;
+    width: 100%;
+    overflow: hidden;
+    color: black;
+}
+
+.posts-container .tl-post::after {
+    --height: 3px;
+    --width: 45%;
+    display: block;
+    content: '';
+    position: relative;
+    box-sizing: border-box;
+    height: var(--height);
+    width: var(--width);
+    background-color: black;
+    top: calc(50% - var(--height) / 2 + 10%);
+    left: calc(30% - var(--width) /3);
+}
+
+.posts-container .tl-post .date {
+    position: absolute;
+    font-size: 1.5em;
+    width: 25%;
+}
+
+
+.posts-container .tl-post .title {
+    position: absolute;
+    right: 0;
+    width: 60%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 1em;
+}

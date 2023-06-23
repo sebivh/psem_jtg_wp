@@ -6,7 +6,7 @@
     width: 80%;
     max-width: 300px;
     height: 90%;
-    color: var(--def-text-color-normal);
+    color: var(--def-text-color-normal) !important;
     text-decoration: none;
 }
 .post-card .image-wrapper{

@@ -22,6 +22,7 @@ get_header();
 </div>
 <div class="metaDataDisplay">
 	<?php
+	//https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data
 	$custom_keys = get_post_custom_keys();
 	//Only execute if any Locations are available
 	if(in_array('address', $custom_keys)) {

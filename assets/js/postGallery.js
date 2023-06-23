@@ -40,7 +40,7 @@ function setUpGallery() {
         mouseDown = true;
         startGalleryManipulation(e.screenX);
     }
-    gallery.onmousemove = function(e) {
+    document.onmousemove = function(e) {
         if(mouseDown)
             updateGalleryManipulation(e.screenX);
     }

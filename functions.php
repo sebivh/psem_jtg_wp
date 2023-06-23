@@ -36,19 +36,22 @@ include_once('functions/shortcodes/postgallery.php');
 include_once('functions/shortcodes/map.php');
 
 /**
+ * Registers the [timeline] shortcode
+ */
+include_once('functions/shortcodes/timeline.php');
+
+/**
  * Registers the Function for appending the Custom Audio Controll Assets
  */
 include_once('functions/audio.php');
 
 function enqueue_styles() {
 	wp_enqueue_style("main-style");
-	wp_enqueue_style("header-style");
 }
 add_action("wp_enqueue_scripts", "enqueue_styles");
 
 function enqueue_scripts() {
 	wp_enqueue_script('jtg-script');
-	wp_enqueue_script('header-script');
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 

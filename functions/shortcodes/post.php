@@ -6,6 +6,8 @@ function post_shortcode($atts = [], $content = null, $tag = ''){
 	$properties = shortcode_atts(
 		array(
 			'post_id' => 0,
+			'title' => null,
+			'excerpt' => null,
 		), $atts, $tag
 	);
 	//returns if no Post is specified
@@ -27,8 +29,18 @@ function post_shortcode($atts = [], $content = null, $tag = ''){
 	//Content
 	$o .= '<span>' . PHP_EOL;
 	//Title
-	$o .= '<h1>' . get_the_title($properties['post_id']) . '</h1>' . PHP_EOL;
-	$o .= '<p>' . get_the_excerpt($properties['post_id']) . '</p>' . PHP_EOL;
+	if($properties['title'] != null) {
+		$title = $properties['title'];
+	} else {
+		$title = get_the_title($properties['post_id']);
+	}
+	if($properties['excerpt'] != null) {
+		$excerpt = $properties['excerpt'];
+	} else {
+		$excerpt = get_the_excerpt($properties['post_id']);
+	}
+	$o .= '<h1>' . $title . '</h1>' . PHP_EOL;
+	$o .= '<p>' . $excerpt . '</p>' . PHP_EOL;
 	$o .= '</span>' . PHP_EOL;
 	//close wrapper
 	$o .= '</a>' . PHP_EOL;

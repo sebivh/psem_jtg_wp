@@ -19,10 +19,11 @@ Version: 0.1
         --def-text-font-size-normal: 1.3rem !important;
         --def-font-line-height-normal: 1.4em !important;
     }
-    body {
+    html body {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-left: 25svw;
     }
 }
 
@@ -45,7 +46,7 @@ a {
 }
 
 a:visited {
-    color: var(--def-link-color);
+    color: var(--def-link-color-visited);
 }
 
 .site-content-container {
@@ -54,37 +55,16 @@ a:visited {
     height: 100%;
     padding: 10px;
     line-height: var(--def-font-line-height-normal);
-    overflow-x: hidden;
+}
+
+.background {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
 }
 
 .background>* {
-    position: fixed;
-    width: 200px;
     pointer-events: none;
-    z-index: -1;
-}
-
-.background>*:nth-child(1) {
-    top: 45vh;
-    left: 30vw;
-}
-
-.background>*:nth-child(2) {
-    top: 10vh;
-    left: 5vw;
-}
-
-.background>*:nth-child(3) {
-    bottom: -10vh;
-    right: 10vw;
-}
-
-.background>*:nth-child(4) {
-    top: 20vh;
-    right: -5vw;
-}
-
-.background>*:nth-child(5) {
-    top: 60vh;
-    left: -10vw;
+    height: 100%;
 }

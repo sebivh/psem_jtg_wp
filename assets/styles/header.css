@@ -122,6 +122,11 @@ nav .burger {
     box-shadow: var(--def-box-shadow);
     z-index: 100;
     pointer-events: all;
+
+    /*This is sadly necessary due to a Bug in Webkit where Aspect Ratio is not working...*/
+    max-height: calc(4rem * var(--nav-burger-size));
+    height: calc(15svw * var(--nav-burger-size));
+    min-height: calc(3rem * var(--nav-burger-size));
 }
 
 nav .burger .burger-ln {
@@ -168,9 +173,13 @@ nav .burger.active .burger-ln:nth-child(2) {
         body nav .menu-navbar-container {
             max-height: unset;
             max-width: unset;
-            height: 100svh;
+            height: 100vh;
             width: 25svw;
+            transition: unset;
             transform: translateX(0);
+            border-radius: unset;
+            border-top-right-radius: var(--def-border-radius);
+            border-bottom-right-radius: var(--def-border-radius);
         }
         body nav .menu-navbar-container #menu-navbar li {
             text-align: left;

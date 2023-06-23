@@ -1,3 +1,8 @@
+<?php
+//Loading Styles and Scripts
+wp_enqueue_style("header-style");
+wp_enqueue_script('header-script');
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
     <head>
@@ -45,4 +50,5 @@ if(has_custom_logo()){
 echo "<span>".get_bloginfo('name')."</span></a>".PHP_EOL;
 ?>
         <div class="site-content-container">
+<?php
             
