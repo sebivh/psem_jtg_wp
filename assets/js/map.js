@@ -25,8 +25,8 @@ function setUpMap() {
 
     var mapPosition = startPosition;
     var mapZoom = startZoom;
-    //Overwriters
-    if(overwriteAddress != null) {
+    //Overwrites
+    if (overwriteAddress != null) {
         if (typeof overwriteAddress !== 'object') {
             if ((overwriteAddress.at(0) == '[' && overwriteAddress.at(overwriteAddress.length - 1) == ']') || (overwriteAddress.at(0) == '{' && overwriteAddress.at(overwriteAddress.length - 1) == '}')) {
                 mapoverwriteAddress = JSON.parse(overwriteAddress);
@@ -37,7 +37,7 @@ function setUpMap() {
             mapPosition = overwriteAddress;
         }
     }
-    if(overwriteZoom != null) {
+    if (overwriteZoom != null) {
         mapZoom = overwriteZoom;
     }
 
@@ -109,7 +109,7 @@ function setUpMap() {
 
 
         //Enter the in Value Saved Latitude and Longitude as the Map View when Selected
-        document.querySelector('.citySelector').onchange = function (event) {
+        document.querySelector('.citySelector').onchange = function(event) {
             var value = event.target.value;
             var coordinates = [];
             if ((value.at(0) == '[' && value.at(value.length - 1) == ']') || (value.at(0) == '{' && value.at(value.length - 1) == '}')) {
@@ -122,7 +122,7 @@ function setUpMap() {
         };
 
         //Jump to City on Button Press
-        document.querySelector('.citySelectorButton').onclick = function (event) {
+        document.querySelector('.citySelectorButton').onclick = function(event) {
             var value = document.querySelector('.citySelector').value;
             var coordinates = [];
             if ((value.at(0) == '[' && value.at(value.length - 1) == ']') || (value.at(0) == '{' && value.at(value.length - 1) == '}')) {
@@ -138,17 +138,17 @@ function setUpMap() {
     //Marker
     var MarkerList = [];
     loadedLocationData.forEach(loc => {
-        MarkerList.push(createMarker(loc.address, loc.theme, loc.title, loc.url)); //Gets the Data out of a Class created in PHP with all loaded Information
+        MarkerList.push(createMarker(loc.address, loc.coordinates, loc.theme, loc.title, loc.url)); //Gets the Data out of a Class created in PHP with all loaded Information
     });
 
     //Add all Marker & Labels to Map
-    MarkerList.forEach(function (marker) {
+    MarkerList.forEach(function(marker) {
         marker.bindTooltip(marker.title).openTooltip();
         //marker.bindPopup(marker.options['title']);
         marker.addTo(map);
     });
 
-    if(interactive) {
+    if (interactive) {
         //Activating location Controls
         document.querySelector('.leaflet-control-locate-location-arrow').parentElement.click()
     }
@@ -170,13 +170,14 @@ function convertAddress(address) {
 
 /**
  * Funktion to create a new Marker
- * @param {any} position as JSON or Adresse:string
+ * @param {string} address as string
+ * @param {Array} coordinates as Array or Null
  * @param {string} style Style of the Marker (assets/pictures/markers/marker-{style}.svg)
  * @param {string} title Titel of the Markers
  * @param {string} url Url the Marker links to
  * @returns {L.marker} a new Instanz of the Leaflet Marker Class
  */
-function createMarker(position, style, title, url) {
+function createMarker(position, coordinates, style, title, url) {
     //Create Marker Icon
     var markerFactor = getCssVar('--map-marker-size');
     var markerSize = [27 * markerFactor, 32 * markerFactor];
@@ -191,20 +192,20 @@ function createMarker(position, style, title, url) {
         iconAnchor: [markerSize[0] / 2, markerSize[1]]
     });
 
-    if (typeof position !== 'object') {
-        if ((position.at(0) == '[' && position.at(position.length - 1) == ']') || (position.at(0) == '{' && position.at(position.length - 1) == '}')) {
-            position = JSON.parse(position);
-        } else {
-            position = convertAddress(position);
-        }
+    //Check if Coordinates are set and if so use them else convert Address to a Position
+    if (coordinates.hasOwnProperty('lat')) {
+        position = coordinates;
+    } else {
+        position = convertAddress(position);
     }
+
     var out = L.marker(position, {
         title: title,
         icon: icon,
         keyboard: true,
         alt: 'Marker for' + title
     });
-    out.on('click', function () {
+    out.on('click', function() {
         document.location = url;
     });
     return out;
