@@ -9,7 +9,8 @@
     color: var(--def-text-color-normal) !important;
     text-decoration: none;
 }
-.post-card .image-wrapper{
+
+.post-card .image-wrapper {
     box-sizing: border-box;
     width: 100%;
     height: 50%;
@@ -43,15 +44,14 @@
 
 .post-card span h1 {
     box-sizing: border-box;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
     font-size: 1.5em;
 }
+
 .post-card span p {
     margin: 0;
-    height: 70%;
     overflow: hidden;
+    height: 3em;
     text-overflow: ellipsis;
 }
