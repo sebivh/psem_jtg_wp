@@ -33,9 +33,9 @@ function map_shortcode($atts = [], $content = null, $tag = ''){
     
     //Get location Data
     $dataList = get_location_data($query);
-    
+
     //Outputs all Data
-    $injection = get_output_data($dataList);
+    $injection = generate_output_data($dataList);
 
     //Creates the finished js
     $o = generate_js_structure($injection, $properties['interactive'], $properties['overwrite_address'], $properties['overwrite_zoom']);
@@ -86,9 +86,10 @@ function generate_js_structure(string $injection, $interactive, $overwrite_addre
              * @param {int} category The Locations Parameter
              * @param {string} theme The Style of the Marker (assets/pictures/markers/marker-{theme}.svg)
             */
-            constructor(title, address, url, category, theme) {
+            constructor(title, address, coordinates, url, category, theme) {
                 this.title = title;
                 this.address = address;
+                this.coordinates = coordinates;
                 this.url = url;
                 this.category = category;
                 this.theme = theme;
@@ -147,57 +148,57 @@ function get_location_data(WP_Query $query) {
         //Setting Post ID
         $post_id = get_the_ID();
 
-        //Create Data and generate Defaults
-        $data = array(
-            'id' => get_the_ID(),
-            'style' => 'default',
-            'addresses' => array(),
-            'toShow' => true,
-            'title' => 'Not Set',
-            'url' => '',
-        );
-
-        //Used Custom Field Values
+        //All Custom Values that are set
         $custom_keys = get_post_custom_keys($post_id);
 
-        //Setting all Values from Custom Fields
-        if (in_array('map_show', $custom_keys)) {
-            $data['id'] = get_post_custom_values('map_show', $post_id)[0];
-        }
-        if (in_array('map_pin_style', $custom_keys)) {
-            $data['style'] = get_post_custom_values('map_pin_style', $post_id)[0];
-        }
-        if (in_array('map_title', $custom_keys)) {
-            $data['title'] = get_post_custom_values('map_title', $post_id)[0];
-        } else {
-            $data['title'] = get_the_title($post_id); //Gets the Title of the Post
-        }
-        $data['url'] = get_permalink($post_id);
+        //Continue in Loop only if Addresses are not set
+        if(!in_array('address', $custom_keys))
+            continue;
 
-        //Try and load rendered addresses from Database
-        $response = $wpdb->get_results("SELECT coordinates FROM `jtg_locations_addresses` WHERE post_id=" . $post_id . ";", $output = ARRAY_A);
+        //Get all Addresses entered in Custom Values
+        $addresses = $data['addresses'] = get_post_custom_values('address', $post_id);
 
-        //If selecting the Data from the Database failed for any reason select the address from the Custom Fields
-        if ($response == null) {
-            //If no address is defined in the Custom Keys set toSho to false
-            if (in_array('address', $custom_keys)) {
-                $data['addresses'] = get_post_custom_values('address', $post_id); //Insert from Custom Field
-            } else { //If there is no custom field Key then set $toShow to false
-                $data['toShow'] = false;
-            }
-        } else {
-            //Fill Addressen with MySQL answer
-            foreach ($response as $entry) {
-                array_push($data['addresses'], $entry["coordinates"]);
-            }
-            $i = array(
-                array(
-                    'coordinates' => '[]'
-                )
+        //Generate Map Points for every Address
+        foreach($addresses as $address) {
+
+            //Create Data and generate Defaults
+            $data = array(
+                'id' => get_the_ID(),
+                'style' => 'default',
+                'toShow' => true,
+                'address' => $address,
+                'coordinates' => '[]',
+                'title' => '',
+                'url' => '',
             );
+
+            //Set all Data from Custom Fields
+            if (in_array('map_show', $custom_keys)) {
+                $data['id'] = get_post_custom_values('map_show', $post_id)[0];
+            }
+            if (in_array('map_pin_style', $custom_keys)) {
+                $data['style'] = get_post_custom_values('map_pin_style', $post_id)[0];
+            }
+            if (in_array('map_title', $custom_keys)) {
+                $data['title'] = get_post_custom_values('map_title', $post_id)[0];
+            } else {
+                $data['title'] = get_the_title($post_id); //Gets the Title of the Post
+            }
+            //Add Address as an Attribute to the URL 
+            $formattedAddress = str_replace(' ', '_', $address);
+            $data['url'] = get_permalink($post_id) . '?address=' . $formattedAddress;
+
+            //Try and load rendered coordinates from Database
+            $response = $wpdb->get_results('SELECT coordinates FROM `jtg_locations_addresses` WHERE post_id="' . $post_id . '"AND raw_address="' . $address . '";' , $output = ARRAY_A);
+
+            //Add Coordinates form the Database to the Data
+            if ($response != null) {
+                $data['coordinates'] = $response[0]["coordinates"];
+            }
+            
+            //Add to output
+            array_push($o, $data);
         }
-        //Add to output
-        array_push($o, $data);
     }
     return $o;
 }
@@ -208,17 +209,22 @@ function get_location_data(WP_Query $query) {
  * @param bool $interactive
  * @return string
  */
-function get_output_data(array $dataList) {
+function generate_output_data(array $dataList) {
     $i = 0; //Counter for ID
     $o = ''; //Output String;
 
     foreach ($dataList as $data) {
         //If its supposed to be seen
         if($data['toShow'] == 'true') {
-            foreach ($data['addresses'] as $address) {
-                //Injects a new Location with loaded Data to JS
-                $o .= 'loadedLocationData.push(new locationData("' . addslashes($data['title']) . '", ' . $address . ',"' . $data['url'] . '",' . $i . ',"' . $data['style'] . '"));'.PHP_EOL;
-              }
+            //Injects a new Location with loaded Data to JS
+            $o .= 'loadedLocationData.push(new locationData(' . 
+            '"' . addslashes($data['title'])                    . '", ' .
+            '"' . addslashes($data['address'])                  . '",' .
+            $data['coordinates']                                . ',' .
+            '"' . $data['url']                                  . '",' .
+            $i                                                  . ',' .
+            '"' . $data['style']                                . '"));'
+            . PHP_EOL;
         }
         $i++;
     }
