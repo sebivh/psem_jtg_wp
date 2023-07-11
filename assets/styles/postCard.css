@@ -52,6 +52,6 @@
 .post-card span p {
     margin: 0;
     overflow: hidden;
-    height: 3em;
+    height: 4em;
     text-overflow: ellipsis;
 }
