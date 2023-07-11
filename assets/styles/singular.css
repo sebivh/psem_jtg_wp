@@ -20,6 +20,10 @@ h1 {
     box-sizing: border-box;
 }
 
+.site-content-container h1 {
+    line-height: 1em;
+}
+
 .wp-block-spacer {
     background-color: unset;
     box-shadow: unset;
@@ -52,6 +56,11 @@ h1 {
     height: 125px;
     width: 100%;
 }
+
+.wp-block-video video {
+    border-radius: var(--def-border-radius);
+}
+
 
 @media screen and (min-width: 1200px) {
     .site-content-container {
