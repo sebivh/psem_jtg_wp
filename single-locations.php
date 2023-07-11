@@ -26,8 +26,12 @@ get_header();
 	$custom_keys = get_post_custom_keys();
 	//Only execute if any Locations are available
 	if(in_array('address', $custom_keys)) {
-		$pin_theme = 'default';
+		//If User comes from the Map an Attribute with the Address is passed and format it
+		$addressAttribute = str_replace('_', ' ', filter_input(INPUT_GET, 'address', FILTER_SANITIZE_URL));
+		$hasAddressAttribute = ($addressAttribute != "");
+
 		//Get the Pin Theme from the Custom Values
+		$pin_theme = 'default';
 		if (in_array('map_pin_style', $custom_keys)) {
 			$pin_theme = get_post_custom_values('map_pin_style', $post_id)[0];
 		}
@@ -36,15 +40,25 @@ get_header();
 		//Generate the HTML for all Locations
 		$addresses = get_post_custom_values('address', $post_id);
 		//Wrapper and Title
-		$title = 'Adresse';
-		if(count($addresses) > 1) {
-			$title = 'Adressen';
+		$title = 'Adressen';
+		if(count($addresses) == 1 || $hasAddressAttribute) {
+			$title = 'Adresse';
 		}
-		echo '<div class="locations"><h1>' . $title . '</h1>';
+
+		echo '<div class="locations"><h1>' . $title . '</h1>' . PHP_EOL;
+		echo '<span class="description">Klicke auf die ' . $title . ' um die Navigation über Google Maps zu starten</span>';
 
 		foreach ($addresses as $address) {
-			//Check if address is an adress or an Array
-			if(!(str_starts_with($address, '[') || str_starts_with($address, '{'))) {
+
+			$isArray = str_starts_with($address, '[') || str_starts_with($address, '{');
+			$attributeIsAddress = ($addressAttribute == $address);
+
+			//Check if address is an address or an Array and Checks if the address is the address from the Attribute. If it is, only shows this Address
+			if(!$isArray) {
+				//If an Address is specified and the Address is not the Specified Address it is not shown
+				if(!($hasAddressAttribute && $attributeIsAddress)) {
+					continue;
+				}
 				//Generating Google Maps Link https://developers.google.com/maps/documentation/urls/get-started
 				$maps_link = 'https://www.google.com/maps/dir/?api=1&travelmode=walking&dir_action=navigate&destination=' . $address;
 				//Echo to HTML
