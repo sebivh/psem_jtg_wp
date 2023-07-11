@@ -2,7 +2,7 @@
     padding: var(--def-spacing)
 }
 
-.timeline > h1 {
+.timeline>h1 {
     margin-bottom: calc(2 * var(--def-spacing));
 }
 
@@ -14,7 +14,7 @@
     padding-bottom: calc(2 * var(--def-spacing)) !important;
 }
 
-.arrow {
+.timeline .arrow {
     --arrowWidth: 10px;
     position: absolute;
     box-sizing: border-box;
@@ -25,19 +25,19 @@
     left: calc(30% - var(--arrowWidth) / 2);
 }
 
-.arrow .arrowHead {
+.timeline .arrow .arrowHead {
     --headWidth: 30px;
     bottom: calc(-1 * var(--def-border-radius));
     left: calc(-1 * var(--headWidth) + var(--arrowWidth) / 2);
     position: absolute;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: var(--headWidth) solid transparent;
     border-right: var(--headWidth) solid transparent;
     border-top: var(--headWidth) solid black;
 }
 
-.posts-container .tl-post {
+.timeline .posts-container .tl-post {
     position: relative;
     height: 3em;
     width: 100%;
@@ -45,7 +45,7 @@
     color: black;
 }
 
-.posts-container .tl-post::after {
+.timeline .posts-container .tl-post::after {
     --height: 3px;
     --width: 45%;
     display: block;
@@ -59,14 +59,13 @@
     left: calc(30% - var(--width) /3);
 }
 
-.posts-container .tl-post .date {
+.timeline .posts-container .tl-post .date {
     position: absolute;
     font-size: 1.5em;
     width: 25%;
 }
 
-
-.posts-container .tl-post .title {
+.timeline .posts-container .tl-post .title {
     position: absolute;
     right: 0;
     width: 60%;
