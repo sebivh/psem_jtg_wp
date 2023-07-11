@@ -9,10 +9,12 @@ function register_styles() {
 	wp_register_style('component-audio-style', get_theme_file_uri("assets/styles/audio.css"));
 	wp_register_style('header-style', get_theme_file_uri("assets/styles/header.css"));
 	wp_register_style('location-style', get_theme_file_uri("assets/styles/location.css"));
+	wp_register_style('ueber-uns-style', get_theme_file_uri("assets/styles/ueber-uns.css"));
 	wp_register_style('component-map-style', get_theme_file_uri("assets/styles/map.css"));
 	wp_register_style('component-postCard-style', get_theme_file_uri("assets/styles/postCard.css"));
 	wp_register_style('component-postGallery-style', get_theme_file_uri("assets/styles/postGallery.css"));
 	wp_register_style('component-timeline-style', get_theme_file_uri("assets/styles/timeline.css"));
+	wp_register_style('component-characteristic-style', get_theme_file_uri("assets/styles/characteristic.css"));
 	wp_register_style('singular-style', get_theme_file_uri("assets/styles/singular.css"));
 	wp_register_style('leaflet-main-style', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css');
 	wp_register_style('leaflet-location-style', 'https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css');

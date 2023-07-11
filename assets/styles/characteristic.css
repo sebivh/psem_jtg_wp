@@ -1,0 +1,21 @@
+.characteristic {
+    box-sizing: border-box;
+    width: 300px;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--def-spacing);
+}
+
+.characteristic img {
+    width: 50%;
+    aspect-ratio: 1/1;
+}
+
+.characteristic h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0;
+}

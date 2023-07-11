@@ -41,6 +41,10 @@ body {
     min-width: 330px;
 }
 
+h1 {
+    line-height: 1em;
+}
+
 a {
     color: var(--def-link-color);
 }

@@ -41,6 +41,11 @@ include_once('functions/shortcodes/map.php');
 include_once('functions/shortcodes/timeline.php');
 
 /**
+ * Registers the [characteristics] shortcode
+ */
+include_once('functions/shortcodes/characteristic.php');
+
+/**
  * Registers the Function for appending the Custom Audio Controll Assets
  */
 include_once('functions/audio.php');
