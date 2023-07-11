@@ -16,7 +16,7 @@ while(have_posts()) {
     }
 }
 
-echo apply_shortcodes('[timeline post_id="' . implode(",", $ids) . '"]');
+echo apply_shortcodes('[timeline post_ids="' . implode(",", $ids) . '"]');
 
 get_footer();
 
