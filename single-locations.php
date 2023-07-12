@@ -27,7 +27,7 @@ get_header();
 	//Only execute if any Locations are available
 	if(in_array('address', $custom_keys)) {
 		//If User comes from the Map an Attribute with the Address is passed and format it
-		$addressAttribute = str_replace('_', ' ', filter_input(INPUT_GET, 'address', FILTER_SANITIZE_URL));
+		$addressAttribute = str_replace('_', ' ', filter_input(INPUT_GET, 'address'));
 		$hasAddressAttribute = ($addressAttribute != "");
 
 		//Get the Pin Theme from the Custom Values
@@ -56,7 +56,7 @@ get_header();
 			//Check if address is an address or an Array and Checks if the address is the address from the Attribute. If it is, only shows this Address
 			if(!$isArray) {
 				//If an Address is specified and the Address is not the Specified Address it is not shown
-				if(!($hasAddressAttribute && $attributeIsAddress)) {
+				if($hasAddressAttribute & !$attributeIsAddress) {
 					continue;
 				}
 				//Generating Google Maps Link https://developers.google.com/maps/documentation/urls/get-started
