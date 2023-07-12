@@ -36,7 +36,6 @@ nav {
     z-index: 100;
     bottom: var(--def-spacing);
     right: var(--nav-right);
-    
     gap: var(--def-spacing);
     pointer-events: none;
 }
@@ -122,7 +121,6 @@ nav .burger {
     box-shadow: var(--def-box-shadow);
     z-index: 100;
     pointer-events: all;
-
     /*This is sadly necessary due to a Bug in Webkit where Aspect Ratio is not working...*/
     max-height: calc(4rem * var(--nav-burger-size));
     height: calc(15svw * var(--nav-burger-size));
@@ -135,71 +133,78 @@ nav .burger .burger-ln {
     border-radius: var(--def-border-radius);
     transition: all calc(var(--nav-link-list-transition-speed) - 50ms) ease;
 }
+
 nav .burger .burger-ln:nth-child(1) {
     width: 100%;
 }
+
 nav .burger .burger-ln:nth-child(2) {
     width: 75%;
 }
+
 nav .burger .burger-ln:nth-child(3) {
     width: 50%;
 }
+
 nav .burger.active .burger-ln:nth-child(1) {
     --local-adjustment-y: calc(1000% / 2 - 100% / 2);
     transform: translateY(var(--local-adjustment-y)) rotate(45deg);
 }
+
 nav .burger.active .burger-ln:nth-child(3) {
     --local-adjustment-y: calc(-1 * (1000% / 2 - 100% / 2));
     width: 100%;
     transform: translateY(var(--local-adjustment-y)) rotate(-45deg);
 }
+
 nav .burger.active .burger-ln:nth-child(2) {
     --local-translateX: calc(100% + 2.75 * var(--burger-padding));
     opacity: 0;
     transform: translateX(var(--local-translateX));
 }
+
 @media screen and (min-width: 1200px) {
     /* parents added inorder to overwrite other Styles: https://stackoverflow.com/questions/19038240/media-query-styles-not-overriding-original-styles*/
-        body nav {
-            right: unset;
-            bottom: unset;
-            left: 0;
-            top: 0;
-        }    
-
-        body nav .burger {
-            display: none;
-        }
-        body nav .menu-navbar-container {
-            max-height: unset;
-            max-width: unset;
-            height: 100vh;
-            width: 25svw;
-            transition: unset;
-            transform: translateX(0);
-            border-radius: unset;
-            border-top-right-radius: var(--def-border-radius);
-            border-bottom-right-radius: var(--def-border-radius);
-        }
-        body nav .menu-navbar-container #menu-navbar li {
-            text-align: left;
-        }
-        body nav .menu-navbar-container #menu-navbar li a {
-            padding-top: 40px;
-        }
-        body nav .menu-navbar-container #menu-navbar li a span {
-            margin-left: var(--def-spacing);
-        }
-        body nav .menu-navbar-container #menu-navbar li:last-child {
-            margin-bottom: 40px;
-        }
-        body nav .menu-navbar-container #menu-navbar {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            overflow-x: hidden;
-        }
-        body {
-            margin-left: 25svw;
-        }
+    body nav {
+        right: unset;
+        bottom: unset;
+        left: 0;
+        top: 0;
     }
+    body nav .burger {
+        display: none;
+    }
+    body nav .menu-navbar-container {
+        max-height: unset;
+        max-width: unset;
+        height: 100vh;
+        width: 25svw;
+        transition: unset;
+        transform: translateX(0);
+        border-radius: unset;
+        overflow: hidden;
+        border-top-right-radius: calc(var(--def-border-radius) * 2);
+        border-bottom-right-radius: calc(var(--def-border-radius) * 2);
+    }
+    body nav .menu-navbar-container #menu-navbar li {
+        text-align: left;
+    }
+    body nav .menu-navbar-container #menu-navbar li a {
+        padding-top: 40px;
+    }
+    body nav .menu-navbar-container #menu-navbar li a span {
+        margin-left: var(--def-spacing);
+    }
+    body nav .menu-navbar-container #menu-navbar li:last-child {
+        margin-bottom: 40px;
+    }
+    body nav .menu-navbar-container #menu-navbar {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        overflow-x: hidden;
+    }
+    body {
+        margin-left: 25svw;
+    }
+}
