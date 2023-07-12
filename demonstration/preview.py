@@ -10,13 +10,18 @@ from selenium.webdriver.support.ui import Select
 
     
 #Duration in Seconds
-def frontPage(duration, driver, f):
+def frontPage(duration, driver):
     driver.get("https://juedischtogo.de/")
     print("Showing Front Page for {} seconds".format(duration))
 
     #Starting with front Page
     rArrow = driver.find_element(By.CSS_SELECTOR, '.arrow.right')
     lArrow = driver.find_element(By.CSS_SELECTOR, '.arrow.left')
+
+    post_in_Gallery = driver.execute_script("return posts.length")
+
+    #scroll's through the Gallery tow time
+    f = duration / (post_in_Gallery * 2)
 
     i = 0
     right = True
@@ -72,10 +77,19 @@ def map_page(duration, driver):
 
 PW = '1612'
 
-#Options to Hide the Controlled by Banner
+#Chrome: Options to Hide the Controlled by Banner
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option("useAutomationExtension", False)
 chrome_options.add_experimental_option("excludeSwitches",["enable-automation"])
+prefs = {"profile.default_content_settings.geolocation" : "2","credentials_enable_service": False,
+     "profile.password_manager_enabled": False}
+chrome_options.add_experimental_option("prefs",prefs)
+
+#Firefox: Option for Geolocation
+firefox_options = webdriver.FirefoxOptions()
+firefox_options.set_preference("geo.enabled", False)
+#firefox_options.set_preference("geo.prompt.testing", True)
+#firefox_options.set_preference("geo.prompt.testing.allow", False)
 
 #Ask User what Driver he wants to use
 print("Welchen Browser möchtest du verwenden?\n1: Chrome\n2: Firefox\n3: Safari")
@@ -85,7 +99,7 @@ inpu = input();
 if(inpu == "1"):
     driver = webdriver.Chrome(chrome_options)
 elif(inpu == "2"):
-    driver = webdriver.Firefox()
+    driver = webdriver.Firefox(firefox_options)
 elif(inpu == "3"):
     driver = webdriver.Safari()
 else:
@@ -94,9 +108,6 @@ else:
 
 #Front Page
 driver.get("https://juedischtogo.de/")
-
-#Enter Full Screen
-driver.fullscreen_window()
 
 #Check for password Protected
 try:
@@ -113,6 +124,11 @@ except NoSuchElementException:
 
 
 #On website
+
+#Enter Full Screen
+driver.maximize_window()
+driver.fullscreen_window()
+
 #In this Loop different sites will be rotated ans shown
 
 sites = [
@@ -125,12 +141,12 @@ sites = [
 
 while(True):
     #Show Front Page
-    frontPage(20, driver, 3)
+    frontPage(20, driver)
 
     #Show Map
     map_page(15, driver)
 
     #Choose 2 random Sites to Scroll down
     for s in range(2):
-        nr = random.randint(0, len(sites))
+        nr = random.randint(0, len(sites) - 1)
         scrollUpAndDown(20, driver, sites[nr])
