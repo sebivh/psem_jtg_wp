@@ -1,6 +1,6 @@
 .characteristic {
     box-sizing: border-box;
-    width: 300px;
+    width: 200px;
     aspect-ratio: 1/1;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,7 @@
 }
 
 .characteristic img {
-    width: 50%;
+    width: 80%;
     aspect-ratio: 1/1;
 }
 
@@ -18,4 +18,8 @@
     text-align: center;
     font-size: 2rem;
     margin: 0;
+}
+
+.wp-block-group__inner-container {
+    display: flex;
 }
