@@ -7,6 +7,7 @@ from selenium.common.exceptions import ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
 
     
 #Duration in Seconds
@@ -91,10 +92,6 @@ firefox_options.set_preference("geo.enabled", False)
 #firefox_options.set_preference("geo.prompt.testing", True)
 #firefox_options.set_preference("geo.prompt.testing.allow", False)
 
-#Safari:
-safari_options =  webdriver.SafariOptions()
-safari_options.page_load_strategy = 'eager'
-
 #Ask User what Driver he wants to use
 print("Welchen Browser möchtest du verwenden?\n1: Chrome\n2: Firefox\n3: Safari")
 inpu = input();
@@ -105,7 +102,7 @@ if(inpu == "1"):
 elif(inpu == "2"):
     driver = webdriver.Firefox(firefox_options)
 elif(inpu == "3"):
-    driver = webdriver.Safari(safari_options)
+    driver = webdriver.Safari()
 else:
     print("Error: '{}' is not a Valid Input".format(inpu))
     exit
@@ -141,7 +138,6 @@ sites = [
     "https://juedischtogo.de/locations/juden-in-passau-im-mittelalter/",
     "https://juedischtogo.de/locations/wie-lebten-juden-in-passau-in-der-dp-gemeinde-1946-52/",
     ]
-
 
 while(True):
     #Show Front Page
