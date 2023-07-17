@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 import random
+import math
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import ElementClickInterceptedException
@@ -8,8 +9,45 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
+#=====================================================================================================
+
+PW = '1612'
+
+#======================================================================================================
+
+sites = [
+    "https://juedischtogo.de/locations/hartl-hartmann",
+    "https://juedischtogo.de/locations/bernheim",
+    "https://juedischtogo.de/locations/juden-in-passau-im-mittelalter/",
+    "https://juedischtogo.de/locations/wie-lebten-juden-in-passau-in-der-dp-gemeinde-1946-52/",
+    ]
+
+videos = [
+    "https://juedischtogo.de/wp-content/uploads/2023/02/VID-20230717-WA0022.mp4",
+    "https://juedischtogo.de/wp-content/uploads/2023/07/Video-Gina-Roitman.mp4",
+]
+
+#======================================================================================================
+
+def is_password_site(driver):
+    try:
+        driver.find_element(By.ID, "password_protected_pass")
+        return True
+    except NoSuchElementException:
+        return False
+
+def hasTag(driver, tag):
+    #Check for password Protected
+    try:
+        audio = driver.find_element(By.TAG_NAME, tag)
+        return True
     
+    except NoSuchElementException:
+        return False
+
 #Duration in Seconds
 def frontPage(duration, driver):
     driver.get("https://juedischtogo.de/")
@@ -41,9 +79,23 @@ def frontPage(duration, driver):
             click()
         i += 1
 
-def scrollUpAndDown(duration, driver, link):
+def scrollUpAndDown(duration, driver, link, playMedia):
     driver.get(link)
-    print("Showing the '{}' Page for {} seconds".format(link, duration))
+
+    #If the Play Media Flag is set and the Page has an Audio Element play the Audio while scrolling, else continue
+    if(playMedia & hasTag(driver, 'audio')):
+        #Wait for Audio to load
+        time.sleep(1)
+        #Set new Duration
+        duration = math.ceil(driver.execute_script("return document.querySelector('audio').duration"))
+        #Interakt with Browser for Security
+        driver.find_element(By.TAG_NAME, "body").click()
+
+        #Play the Audio
+        driver.execute_script("document.querySelector('audio').play()")
+        print("Showing the '{}' Page with Media for {} seconds".format(link,  duration))
+    else:
+        print("Showing the '{}' Page for {} seconds".format(link, duration))
 
     time.sleep(1)
 
@@ -69,14 +121,32 @@ def map_page(duration, driver):
 
     time.sleep(duration)
 
+def play_video(driver, link):
+    driver.get(link)
+
+    #Wait for Video to load
+    time.sleep(1)
+
+    #Sets Duration
+    duration = math.ceil(driver.execute_script("return document.querySelector('video').duration"))
+
+    #Fullscreens the Video
+    driver.execute_script("document.querySelector('video').requestFullscreen()")
+
+    #Play
+    driver.execute_script("document.querySelector('video').play()")
+
+    print("Showing the '{}' Video for {} seconds".format(link, duration))
+
+    time.sleep(duration)
+
+
 
 
 
 
 
 #======================Start================================
-
-PW = '1612'
 
 #Chrome: Options to Hide the Controlled by Banner
 chrome_options = webdriver.ChromeOptions()
@@ -94,14 +164,47 @@ firefox_options.set_preference("geo.enabled", False)
 
 #Ask User what Driver he wants to use
 print("Welchen Browser möchtest du verwenden?\n1: Chrome\n2: Firefox\n3: Safari")
-inpu = input();
+inpuD = input()
+
+#Ask User if Media should be played
+print("Sollen die Medien auf der Website wiedergegeben werden? Wenn ja, versucht das Skript Audio Dateien auf den Seiten zu finden und diese Abzuspielen. Die Seiten werden dann auch so lange angezeigt solange die Audio spielt. Auch werden Videos zwischen den einzelnen Seiten abgespielt. \n1: Ja\n2: Nein")
+inpuM = input()
+#Set Flag
+playMedia = (inpuM == '1')
+
+
+#Ask User how many Pages should be shown after another
+print("Wie viele Websites sollen hintereinander angezeigt werden?")
+page_seq = input()
+if(not page_seq):
+    page_seq = 8
+else:
+    page_seq = int(page_seq)
+
+#Ask User how long Pages should be shown
+print("Wie viele Sekunden lang sollen ein Ort angezeigt werden?")
+page_dur = input()
+if(not page_dur):
+    page_dur = 30
+else:
+    page_dur = int(page_dur)
+
+
+if(playMedia):
+    print("Medien Wiedergabe ist Aktiv: Wie viele Videos sollen hintereinander angezeigt werden?")
+    video_seq = input()
+    if(not video_seq):
+        video_seq = 1
+    else:
+        video_seq = int(video_seq)
+
 
 #Select Input and define Driver
-if(inpu == "1"):
+if(inpuD == "1"):
     driver = webdriver.Chrome(chrome_options)
-elif(inpu == "2"):
+elif(inpuD == "2"):
     driver = webdriver.Firefox(firefox_options)
-elif(inpu == "3"):
+elif(inpuD == "3"):
     driver = webdriver.Safari()
 else:
     print("Error: '{}' is not a Valid Input".format(inpu))
@@ -111,7 +214,7 @@ else:
 driver.get("https://juedischtogo.de/")
 
 #Check for password Protected
-try:
+if(is_password_site(driver)):
     pwbox = driver.find_element(By.ID, "password_protected_pass")
     print("Website Password Protected, Entering Password")
     # click on the Password Field
@@ -119,8 +222,7 @@ try:
     pwbox.send_keys(PW)
     # Click Button to Send form
     driver.find_element(By.ID, "wp-submit").click()
-    
-except NoSuchElementException:
+else:
     print("No Password Protection detected, continuing")
 
 
@@ -132,21 +234,21 @@ driver.fullscreen_window()
 
 #In this Loop different sites will be rotated ans shown
 
-sites = [
-    "https://juedischtogo.de/locations/hartl-hartmann",
-    "https://juedischtogo.de/locations/bernheim",
-    "https://juedischtogo.de/locations/juden-in-passau-im-mittelalter/",
-    "https://juedischtogo.de/locations/wie-lebten-juden-in-passau-in-der-dp-gemeinde-1946-52/",
-    ]
-
 while(True):
+
     #Show Front Page
-    frontPage(20, driver)
+    frontPage(page_dur, driver)
 
     #Show Map
     map_page(15, driver)
 
     #Choose 2 random Sites to Scroll down
-    for s in range(2):
+    for s in range(page_seq):
         nr = random.randint(0, len(sites) - 1)
-        scrollUpAndDown(20, driver, sites[nr])
+        scrollUpAndDown(page_dur, driver, sites[nr], playMedia)
+
+    #Play one Random Video if the playMedia Flag is set
+    if(playMedia):
+        for s in range(video_seq):
+            nr = random.randint(0, len(videos) - 1)
+            play_video(driver, videos[nr])
