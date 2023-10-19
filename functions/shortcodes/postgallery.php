@@ -1,5 +1,9 @@
 <?php
 function postgallery_shortcode($atts = [], $content = null, $tag = ''){
+	// Return nothing if there is no content
+	if($content == null){
+		return'';
+	}
 	//Enqueue Scripts and Styles
 	wp_enqueue_style('component-postGallery-style');
 	wp_enqueue_script('component-postGallery-script');

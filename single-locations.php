@@ -20,6 +20,12 @@ get_header();
 		echo '<span class="caption">', $caption, '</span>' . PHP_EOL;
 	?>
 </div>
+
+<?php
+# Displaying the Content
+the_content();
+?>
+
 <div class="metaDataDisplay">
 	<?php
 	//https://developer.mozilla.org/en-US/docs/Learn/Forms/Sending_and_retrieving_form_data
@@ -69,7 +75,27 @@ get_header();
 	}
 	?>
 </div>
+<h2>Weitere Artikel</h2>
 <?php
-the_content();
+
+$this_post_id = $post->ID;
+
+$query = new WP_Query(array(
+	'post_type' => 'locations',
+	'post_status' => 'publish',
+	'posts_per_page' => -1,
+));
+
+$c = '';
+
+while($query->have_posts()) {
+    $query->the_post();
+    $id = get_the_ID();
+	if($id != $this_post_id) {
+		$c .='[post post_id=' . $id . ']';
+	}
+}
+
+echo(do_shortcode('[postgallery]' . $c . '[/postgallery]'));
 
 get_footer();

@@ -5,6 +5,9 @@ wp_enqueue_style('singular-style');
 wp_enqueue_script('component-timeline-script');
 get_header();
 
+//Get Query
+$query = get_query( (int) $properties['location_post_id']);
+
 $ids = array();
 
 while(have_posts()) {

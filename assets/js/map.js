@@ -16,7 +16,7 @@ function setUpMap() {
     //Tile Set http://leaflet-extras.github.io/leaflet-providers/preview/index.html
     // https://tiles.stadiamaps.com/styles/stamen_toner_lite.json
     var Stamen_lite = L.maplibreGL({
-        style: 'https://tiles-eu.stadiamaps.com/styles/alidade_smooth.json?api_key=4a632b54-1d20-4a39-a996-09b207acf699',
+        style: 'https://tiles.stadiamaps.com/styles/stamen_toner_lite.json',
         attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a>&copy; <a href="https://stamen.com/" target="_blank">Stamen Design</a>&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a>&copy; <a href="https://www.openstreetmap.org/about/" target="_blank">OpenStreetMap contributors</a>',
     });
 
@@ -43,6 +43,7 @@ function setUpMap() {
     //Setup
     map = new L.Map(html_map, {
         attributionControl: false,
+        zoomSnap: .1,
         zoomControl: interactive,
         boxZoom: interactive,
         doubleClickZoom: interactive,

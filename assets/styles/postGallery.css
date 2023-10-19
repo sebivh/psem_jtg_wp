@@ -70,8 +70,11 @@
 }
 
 .postgallery .left {
-    transform: scaleX(-1);
     left: calc(0.5 * var(--def-spacing));
+}
+
+.postgallery .left img {
+    transform: scaleX(-1);
 }
 
 .postgallery .right {
