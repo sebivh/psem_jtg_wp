@@ -18,6 +18,7 @@ function register_styles() {
 	wp_register_style('singular-style', get_theme_file_uri("assets/styles/singular.css"));
 	wp_register_style('leaflet-main-style', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css');
 	wp_register_style('leaflet-location-style', 'https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css');
+	wp_register_style('maplibre-gl-style', '//unpkg.com/maplibre-gl@3.2.1/dist/maplibre-gl.css');
 }
 add_action('init', 'register_styles');
 
@@ -34,5 +35,7 @@ function register_scripts() {
 	wp_register_script('component-timeline-script', get_theme_file_uri("assets/js/timeline.js"), array(), false, true);
 	wp_register_script('leaflet-main-script', 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.js', array(), false, false);
 	wp_register_script('leaflet-location-script', 'https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js', array(), false, false);
+	wp_register_script('maplibre-gl-js-script', '//unpkg.com/maplibre-gl@3.2.1/dist/maplibre-gl.js', array(), false, false);
+	wp_register_script('maplibre-gl-leaflet-script', 'https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.19/leaflet-maplibre-gl.js', array(), false, false);
 }
 add_action('init', 'register_scripts');

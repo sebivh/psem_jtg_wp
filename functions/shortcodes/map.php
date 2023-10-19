@@ -18,9 +18,12 @@ function map_shortcode($atts = [], $content = null, $tag = ''){
     //Include Style and Script
     wp_enqueue_style('component-map-style');
     wp_enqueue_script('component-map-script');
+    wp_enqueue_script('maplibre-gl-style');
     //External Styles and Scripts
     wp_enqueue_style('leaflet-main-style');
     wp_enqueue_script('leaflet-main-script');
+    wp_enqueue_script('maplibre-gl-js-script');
+    wp_enqueue_script('maplibre-gl-leaflet-script');
 
     //Only Include Location Controll if needed by an Interactive Map
     if($properties['interactive'] === 'true') {

@@ -10,12 +10,17 @@ var map;
 
 function setUpMap() {
     //Leaflet
+    // MapLibre GL JS does not handle RTL text by default, so we recommend adding this dependency to fully support RTL rendering. 
+    maplibregl.setRTLTextPlugin('https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-rtl-text/v0.2.1/mapbox-gl-rtl-text.js')
+
     //Tile Set http://leaflet-extras.github.io/leaflet-providers/preview/index.html
-    var Stamen_lite = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png', {
-        minZoom: 14,
-        maxZoom: 18,
+    // https://tiles.stadiamaps.com/styles/stamen_toner_lite.json
+    var Stamen_lite = L.maplibreGL({
+        style: 'https://tiles-eu.stadiamaps.com/styles/alidade_smooth.json?api_key=4a632b54-1d20-4a39-a996-09b207acf699',
         attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a>&copy; <a href="https://stamen.com/" target="_blank">Stamen Design</a>&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a>&copy; <a href="https://www.openstreetmap.org/about/" target="_blank">OpenStreetMap contributors</a>',
     });
+
+
 
     var mapPosition = startPosition;
     var mapZoom = startZoom;
