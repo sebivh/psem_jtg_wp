@@ -13,9 +13,10 @@ function setup_controlls( WP_Customize_Manager $wp_customize) {
 		return;
 	}
 
+	//Reads all Controls written in customizor.json
 	$controlls = json_decode( file_get_contents( $datafile));
 
-	//Sets Up Settings and Controlls
+	//Sets Up Settings and Controls
 	foreach ($controlls as $controll) {
 		$wp_customize->add_setting( 'set-' . $controll->handle, array(
 			'default' =>  $controll->default,

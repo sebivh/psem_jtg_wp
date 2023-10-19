@@ -11,16 +11,10 @@ var map;
 function setUpMap() {
     //Leaflet
     //Tile Set http://leaflet-extras.github.io/leaflet-providers/preview/index.html
-    var Stamen_lite = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png', {
+    var Stamen_lite = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png', {
         minZoom: 14,
         maxZoom: 18,
-        attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    });
-
-    var Stamen_TonerLabels = L.tileLayer('https://stamen-tiles.a.ssl.fastly.net/toner-labels/{z}/{x}/{y}.{ext}', {
-        minZoom: 14,
-        maxZoom: 18,
-        ext: 'png'
+        attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a>&copy; <a href="https://stamen.com/" target="_blank">Stamen Design</a>&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a>&copy; <a href="https://www.openstreetmap.org/about/" target="_blank">OpenStreetMap contributors</a>',
     });
 
     var mapPosition = startPosition;
@@ -53,7 +47,6 @@ function setUpMap() {
 
     });
     map.addLayer(Stamen_lite);
-    //map.addLayer(Stamen_TonerLabels);
     map.setView(mapPosition, mapZoom);
 
     //Change attribution position to the Bottom Left
