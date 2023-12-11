@@ -7,11 +7,12 @@ get_header();
 ?>
 <div class="cover">
 	<h1 class="title"><?php the_title() ?></h1>
+	<div class="thumbnail-container">
 	<?php
 	if(has_post_thumbnail()){
 		the_post_thumbnail();
 	} else {
-		echo "<img src='" . wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ) , 'full' )[0] . "' alt= 'Custom Logo'>".PHP_EOL;
+		echo '<img src="' . wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ) , 'full' )[0] . '" alt= "Custom Logo">'.PHP_EOL;
 	}
 	?>
 	<?php
@@ -19,6 +20,7 @@ get_header();
 	if ($caption !== '')
 		echo '<span class="caption">', $caption, '</span>' . PHP_EOL;
 	?>
+	</div>
 </div>
 
 <?php
