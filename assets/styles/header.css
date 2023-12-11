@@ -69,16 +69,10 @@ nav .menu-navbar-container #menu-navbar {
 }
 
 nav .menu-navbar-container #menu-navbar li {
-    border-radius: var(--def-border-radius);
     text-align: right;
     font-size: 1.5rem;
     line-height: var(--def-font-line-height-large);
-    transition: background calc(var(--nav-link-list-transition-speed) / 2) ease;
     width: auto;
-}
-
-nav .menu-navbar-container #menu-navbar li:hover {
-    background-color: var(--nav-link-list-background-hover);
 }
 
 nav .menu-navbar-container #menu-navbar li hr {
@@ -88,6 +82,8 @@ nav .menu-navbar-container #menu-navbar li hr {
 }
 
 nav .menu-navbar-container #menu-navbar li a {
+    transition: background calc(var(--nav-link-list-transition-speed) / 2) ease;
+    border-radius: var(--def-border-radius);
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -95,13 +91,33 @@ nav .menu-navbar-container #menu-navbar li a {
     padding-top: 30px;
 }
 
+nav .menu-navbar-container #menu-navbar li a:hover {
+    background-color: var(--nav-link-list-background-hover);
+}
+
 nav .menu-navbar-container #menu-navbar li * {
     color: var(--nav-link-list-text-color);
     text-decoration: none;
 }
 
+nav .menu-navbar-container #menu-navbar li.menu-item-has-children a {
+    cursor: pointer;
+}
+
+nav .menu-navbar-container #menu-navbar li.menu-item-has-children ul.sub-menu {
+    display: none;
+}
+
+nav .menu-navbar-container #menu-navbar li.menu-item-has-children.active ul.sub-menu {
+    list-style: none;
+    padding: 0;
+    margin-right: var(--def-spacing);
+    display: block;
+}
+
 nav .burger {
     all: unset;
+    cursor: pointer;
     background-color: var(--nav-burger-color);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
@@ -203,6 +219,9 @@ nav .burger.active .burger-ln:nth-child(2) {
         padding: 0;
         margin: 0;
         overflow-x: hidden;
+    }
+    body nav .menu-navbar-container #menu-navbar li.menu-item-has-children.active ul.sub-menu {
+        margin: 0 0 0 var(--def-spacing);
     }
     body {
         margin-left: 25svw;
