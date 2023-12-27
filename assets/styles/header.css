@@ -223,9 +223,6 @@ nav .burger.active .burger-ln:nth-child(2) {
     body nav .menu-navbar-container #menu-navbar li a span {
         margin-left: var(--def-spacing);
     }
-    /*body nav .menu-navbar-container #menu-navbar li:last-child {
-        margin-bottom: 40px;
-    }*/
     body nav .menu-navbar-container #menu-navbar {
         list-style-type: none;
         padding: 0;
