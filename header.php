@@ -17,6 +17,8 @@ wp_enqueue_script('header-script');
         <nav>
             <?php
             /**Integrating WP Menu*/
+            $walker = new Menu_With_Description;
+
             wp_nav_menu(
                 array(
                     "theme_location" => "header-menu",
@@ -24,7 +26,9 @@ wp_enqueue_script('header-script');
                     "menu_class" => "header-menu-navbar-container",
                     "item_spacing" => "discard",
                     "link_before" => "<span>",
-                    "link_after" => "</span><hr>"
+                    "link_after" => "</span><hr>",
+                    //For Descriptions
+                    "walker" => $walker
                 )
             );
             echo PHP_EOL;

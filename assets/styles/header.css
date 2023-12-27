@@ -75,6 +75,15 @@ nav .menu-navbar-container #menu-navbar li {
     width: auto;
 }
 
+nav .menu-navbar-container #menu-navbar li .sub {
+    display: block;
+    position: relative;
+    font-size: 1rem;
+    width: 50%;
+    margin-left: auto;
+    padding-bottom: var(--def-spacing);
+}
+
 nav .menu-navbar-container #menu-navbar li hr {
     height: var(--nav-link-list-brake-line-height);
     background-color: var(--nav-link-list-text-color);
@@ -205,15 +214,18 @@ nav .burger.active .burger-ln:nth-child(2) {
     body nav .menu-navbar-container #menu-navbar li {
         text-align: left;
     }
+    nav .menu-navbar-container #menu-navbar li .sub {
+        margin: 0;
+    }
     body nav .menu-navbar-container #menu-navbar li a {
         padding-top: 40px;
     }
     body nav .menu-navbar-container #menu-navbar li a span {
         margin-left: var(--def-spacing);
     }
-    body nav .menu-navbar-container #menu-navbar li:last-child {
+    /*body nav .menu-navbar-container #menu-navbar li:last-child {
         margin-bottom: 40px;
-    }
+    }*/
     body nav .menu-navbar-container #menu-navbar {
         list-style-type: none;
         padding: 0;
