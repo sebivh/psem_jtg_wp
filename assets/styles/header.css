@@ -220,7 +220,7 @@ nav .burger.active .burger-ln:nth-child(2) {
     body nav .menu-navbar-container #menu-navbar li a {
         padding-top: 40px;
     }
-    body nav .menu-navbar-container #menu-navbar li a span {
+    body nav .menu-navbar-container #menu-navbar li a .sub {
         margin-left: var(--def-spacing);
     }
     body nav .menu-navbar-container #menu-navbar {
