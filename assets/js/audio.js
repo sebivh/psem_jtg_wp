@@ -56,8 +56,15 @@ class CustomAudioControl {
 
     setCurrentTimeFromClick(e) {
         var clickPos = e.clientX - this.playback.getBoundingClientRect().x;
-        var time = this.originalAudio.duration * (clickPos / this.playback.offsetWidth);
+        //If click is close to beginning set Time to 0 for UX
+        if (clickPos >= 10) {
+            var time = this.originalAudio.duration * (clickPos / this.playback.offsetWidth);
+        } else {
+            time = 0;
+        }
+        //Set time to calculated
         this.originalAudio.currentTime = time;
+        //Play
         this.play();
     }
 

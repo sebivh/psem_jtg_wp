@@ -7,41 +7,44 @@ var rightArrow = null;
 var leftArrow = null;
 
 registerOnLoad(setUpGallery);
-registerOnResize(stopGalleryManipulation);
 
 var mouseDown = false;
+
 function setUpGallery() {
     gallery = document.querySelector('.postgallery');
     posts = gallery.querySelectorAll('.post-card');
     wrapper = gallery.querySelector('.postwrapper');
     rightArrow = gallery.querySelector('.arrow.right');
     leftArrow = gallery.querySelector('.arrow.left');
+
+    registerOnResize(stopGalleryManipulation);
+
     //Buttons
-    rightArrow.onclick = function(){
+    rightArrow.onclick = function() {
         currentPost++;
         stopGalleryManipulation();
     }
-    leftArrow.onclick = function(){
-        currentPost--;
-        stopGalleryManipulation();
-    }
-    //Handlers for Touch Support
-    gallery.ontouchstart = function (e) {
+    leftArrow.onclick = function() {
+            currentPost--;
+            stopGalleryManipulation();
+        }
+        //Handlers for Touch Support
+    gallery.ontouchstart = function(e) {
         startGalleryManipulation(e.touches[0].screenX)
     }
-    gallery.ontouchmove = function (e) {
+    gallery.ontouchmove = function(e) {
         updateGalleryManipulation(e.touches[0].screenX);
     }
-    gallery.ontouchend = function () {
-        stopGalleryManipulation();
-    }
-    //Handlers for Mouse Support
+    gallery.ontouchend = function() {
+            stopGalleryManipulation();
+        }
+        //Handlers for Mouse Support
     gallery.onmousedown = function(e) {
         mouseDown = true;
         startGalleryManipulation(e.screenX);
     }
     document.onmousemove = function(e) {
-        if(mouseDown)
+        if (mouseDown)
             updateGalleryManipulation(e.screenX);
     }
     document.onmouseup = function() {
@@ -59,6 +62,7 @@ var currentPost = 0;
 var manipulationXorigin = 0;
 var center = 0;
 var change = 0;
+
 function startGalleryManipulation(screenX) {
     manipulationXorigin = screenX;
     change = 0;
@@ -69,7 +73,7 @@ function updateGalleryManipulation(screenX) {
     change += screenX - manipulationXorigin;
     manipulationXorigin = screenX;
     var manipulator = change * postCardSpeed + center
-    //Manipulate Post
+        //Manipulate Post
     wrapper.style.transform = 'translateX(' + manipulator + 'px' + ')';
 }
 
