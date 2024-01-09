@@ -93,7 +93,8 @@ add_action('manage_posts_custom_column', 'column_content', 5, 2);
 
 // Add Menu description Functionality according to https://www.wpbeginner.com/wp-themes/how-to-add-menu-descriptions-in-your-wordpress-themes/
 class Menu_With_Description extends Walker_Nav_Menu {
-    function start_el(&$output, $item, $depth, $args) {
+    //&$output, $data_object, $depth = 0, $args = NULL, $current_object_id = 0
+    function start_el(&$output, $item, $depth = 0, $args = NULL, $current_object_id = 0) {
         global $wp_query;
         $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
          
