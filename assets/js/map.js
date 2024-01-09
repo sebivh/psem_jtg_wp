@@ -43,7 +43,7 @@ function setUpMap() {
     //Setup
     map = new L.Map(html_map, {
         attributionControl: false,
-        zoomSnap: .1,
+        zoomSnap: 0.5,
         zoomControl: interactive,
         boxZoom: interactive,
         doubleClickZoom: interactive,
