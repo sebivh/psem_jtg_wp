@@ -31,6 +31,12 @@ h1 {
     text-align: justify;
 }
 
+.wp-block-group__inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .wp-block-image img {
     border-radius: var(--def-border-radius);
     width: 100%;

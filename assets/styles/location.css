@@ -29,6 +29,7 @@ body .cover {
     top: -10%;
     left: 0;
     width: 80%;
+    white-space: nowrap;
 }
 
 .cover img {

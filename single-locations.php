@@ -100,4 +100,37 @@ while($query->have_posts()) {
 
 echo(do_shortcode('[postgallery]' . $c . '[/postgallery]'));
 
+?>
+<script>
+
+// Determines if the passed element is overflowing its bounds,
+// either vertically or horizontally.
+// Will temporarily modify the "overflow" style to detect this
+// if necessary.
+function checkOverflow(el)
+{
+   var curOverflow = el.style.overflow;
+
+   if ( !curOverflow || curOverflow === "visible" )
+      el.style.overflow = "hidden";
+
+   var isOverflowing = el.clientWidth  < el.scrollWidth
+
+   el.style.overflow = curOverflow;
+
+   return isOverflowing;
+}
+
+h1 = document.querySelector('.title')
+
+while (checkOverflow(h1)) {
+	fontS = window.getComputedStyle(h1, null).getPropertyValue('font-size')
+	h1.style.fontSize = parseInt(fontS.replace('px', '')) - 1 + 'px'
+	console.log(parseInt(fontS.replace('px', '')) - 1 + 'px');
+}
+
+
+</script>
+
+<?php
 get_footer();
