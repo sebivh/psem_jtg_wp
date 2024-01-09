@@ -12,6 +12,13 @@ wp_enqueue_script('header-script');
         <title><? echo get_bloginfo('name') ?></title>
         <!--Meta-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="<?php
+            if($post->post_excerpt != "") {
+                echo ("Jüdisches Leben in Passau, " . $post->post_title . ": " . $post->post_excerpt);
+            } else {
+                echo("Jüdisches Leben in Passau: " . $post->post_title);
+            }
+        ?> ">
     </head>
     <body>
         <nav>
