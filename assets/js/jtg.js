@@ -1,12 +1,12 @@
 //Gets the Directory this Script is placed in
 function getDir() {
-    let scripts= document.getElementsByTagName('script');
-    let path= scripts[scripts.length-1].src.split('?')[0];
-    return path.split('/').slice(0, -1).join('/')+'/';
+    let scripts = document.getElementsByTagName('script');
+    let path = scripts[scripts.length - 1].src.split('?')[0];
+    return path.split('/').slice(0, -1).join('/') + '/';
 }
 
 function getCssVar(name) {
-    return getComputedStyle(html_map).getPropertyValue(name);
+    return getComputedStyle(document.querySelector("html")).getPropertyValue(name);
 }
 
 /**
@@ -33,7 +33,7 @@ function registerOnComplete(func) {
 /**
  * Executing every Function that should be executed on start
  */
-document.onreadystatechange = function () {
+document.onreadystatechange = function() {
     if (document.readyState == "interactive") {
         startFunctions.forEach(func => {
             func();
@@ -57,7 +57,7 @@ function registerOnResize(func) {
     resizeFunctions.push(func);
 }
 
-addEventListener("resize", function () {
+addEventListener("resize", function() {
     resizeFunctions.forEach(func => {
         func();
     });

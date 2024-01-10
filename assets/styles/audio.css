@@ -20,13 +20,14 @@ audio {
     box-sizing: border-box;
     width: 20%;
     height: 100%;
+    aspect-ratio: 1 / 1;
     border: none;
     background: transparent;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
+    margin-right: var(--def-audio-distance-timeline);
 }
 
 .playback {
@@ -46,7 +47,7 @@ audio {
     aspect-ratio: 1 / 1;
     position: absolute;
     border-radius: 999px;
-    background-color: black;
+    background-color: var(--def-audio-control-color);
     transition: transform ease-out 200ms;
     transform: translateX(0px);
     pointer-events: none;
@@ -56,7 +57,7 @@ audio {
     width: 100%;
     height: 6px;
     pointer-events: none;
-    background-color: black;
+    background-color: var(--def-audio-control-color);
     border-radius: 20px;
 }
 
@@ -77,9 +78,9 @@ audio {
 
 .playpause>* {
     position: absolute;
-    max-width: 40px;
-    width: 5svw;
-    min-width: 30px;
+    max-width: calc(40px * var(--def-audio-play-pause-size));
+    width: calc(5svw * var(--def-audio-play-pause-size));
+    min-width: calc(30px * var(--def-audio-play-pause-size));
     transition: opacity 150ms ease;
 }
 

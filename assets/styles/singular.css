@@ -39,6 +39,7 @@ h1 {
 
 .wp-block-image img {
     border-radius: var(--def-border-radius);
+    max-height: var(--def-post-max-image-height);
     width: 100%;
 }
 
