@@ -107,6 +107,9 @@ echo(do_shortcode('[postgallery]' . $c . '[/postgallery]'));
 // either vertically or horizontally.
 // Will temporarily modify the "overflow" style to detect this
 // if necessary.
+
+var defSpace  = parseFloat(getCssVar("--def-spacing").replace('px', ''));
+
 function checkOverflow(el)
 {
    var curOverflow = el.style.overflow;
@@ -114,7 +117,7 @@ function checkOverflow(el)
    if ( !curOverflow || curOverflow === "visible" )
       el.style.overflow = "hidden";
 
-   var isOverflowing = el.clientWidth  < el.scrollWidth
+   var isOverflowing = (el.clientWidth + defSpace)  < el.scrollWidth
 
    el.style.overflow = curOverflow;
 
@@ -126,7 +129,6 @@ h1 = document.querySelector('.title')
 while (checkOverflow(h1)) {
 	fontS = window.getComputedStyle(h1, null).getPropertyValue('font-size')
 	h1.style.fontSize = parseInt(fontS.replace('px', '')) - 1 + 'px'
-	console.log(parseInt(fontS.replace('px', '')) - 1 + 'px');
 }
 
 
