@@ -1,5 +1,3 @@
-const customAudioControlHTML = '<div class="audiocontroll"><button class="playpause" aria-label="Audio Play-Pause Button"><img src="' + getDir() + '../pictures/play.svg" class="play" alt=""></img><img src="' + getDir() + '../pictures/pause.svg" class="pause" alt=""></img></button><div class="playback"><div class="playbackhead"></div><div class="playbackdisplay"></div><span class="currentTime"></span><span class="totalTime"></span></div></div>';
-
 //allCustomControls
 let allCustomControls = new Map();
 
@@ -13,7 +11,7 @@ class CustomAudioControl {
      */
     constructor(div) {
         this.originalAudio = div;
-        this.customAudioControlHTML = createCustomAudioControlHTML();
+        this.customAudioControlHTML = this.originalAudio.parentNode.querySelector('.audiocontroll');
         this.playpause = this.customAudioControlHTML.querySelector('.playpause');
         this.playImg = this.customAudioControlHTML.querySelector('.play');
         this.pauseImg = this.customAudioControlHTML.querySelector('.pause');
@@ -22,7 +20,6 @@ class CustomAudioControl {
         this.currentTime = this.customAudioControlHTML.querySelector('.currentTime');
         this.totalTime = this.customAudioControlHTML.querySelector('.totalTime');
         this.__setUpListeners(this.customAudioControlHTML);
-        this.__injectHTML(this.customAudioControlHTML);
         allCustomControls.set(this.originalAudio, this);
         this.update();
     }
@@ -72,11 +69,6 @@ class CustomAudioControl {
         return this.originalAudio.paused;
     }
 
-    __injectHTML(toInject) {
-        //Inserts the customAudioControlHTML AFTER the originalAudio Tag
-        insertAfter(this.originalAudio, toInject);
-    }
-
     __setUpListeners() {
         //Setting up the Button
         this.playpause.onclick = togglePlayState;
@@ -116,25 +108,6 @@ function adjustPlayback(e) {
 function updateCustom(e) {
     customAudio = allCustomControls.get(e.target);
     customAudio.update();
-}
-
-/**
- * Creates the Elements for the Custom Audio controll
- * @returns {element}
- */
-function createCustomAudioControlHTML() {
-    var template = document.createElement('template');
-    template.innerHTML = customAudioControlHTML;
-    return template.content.childNodes[0];
-}
-
-/**
- * 
- * @param {element} existing The Existing Element to be inserted after
- * @param {element} toInsert The Element that gets Inserted after
- */
-function insertAfter(existing, toInsert) {
-    existing.parentNode.insertBefore(toInsert, existing.nextSibling);
 }
 
 /**
