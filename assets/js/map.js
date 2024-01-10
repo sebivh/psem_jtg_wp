@@ -63,7 +63,6 @@ function setUpMap() {
     //Add if Interactive
     if (interactive) {
         //Set Up User Position Controlls
-        var compassSize = getCssVar('--map-location-arrow-size');
         L.control.locate({
             flyTo: true,
             keepCurrentZoomLevel: true,
@@ -186,7 +185,6 @@ function convertAddress(address) {
  */
 function createMarker(position, coordinates, style, title, url) {
     //Create Marker Icon
-    var markerFactor = getCssVar('--map-marker-size');
     var markerSize = [27 * markerFactor, 32 * markerFactor];
     var styleUrl = 'default';
     if (style != '') {

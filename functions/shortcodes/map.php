@@ -105,6 +105,8 @@ function generate_js_structure(string $injection, $interactive, $overwrite_addre
         const interactive = JSON.parse(' . json_encode($interactive) . ');
         const overwriteAddress = ' . $overwrite_address . ';
         const overwriteZoom = ' . $overwrite_zoom . ';
+        const compassSize = ' . get_theme_mod("set-map-location-arrow-size") . ';
+        const markerFactor = ' . get_theme_mod("set-map-marker-size") . ';
 
         ' . $injection . '
         </script>

@@ -176,6 +176,7 @@
         "description": "",
         "section": "sec_map",
         "type": "range",
+        "print": false,
         "range": {
             "min": 1,
             "max": 10,
@@ -202,6 +203,7 @@
         "description": "",
         "section": "sec_map",
         "type": "range",
+        "print": false,
         "range": {
             "min": 1,
             "max": 10,
