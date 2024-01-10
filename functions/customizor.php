@@ -130,6 +130,11 @@ function setup_sections( WP_Customize_Manager $wp_customize ) {
 		'description' => 'Bearbeite das Aussehen der Ortsseiten.',
 		'priority' => 40,
 	));
+	$wp_customize->add_section('sec_gallarystyle', array(
+		'title' => 'Gallery Stiel',
+		'description' => 'Bearbeite das Aussehen der Gallery.',
+		'priority' => 40,
+	));
 }
 //================USER SELECTED CSS Variables====================
 add_action('wp_head', 'generateCSSVariables');

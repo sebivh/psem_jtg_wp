@@ -36,7 +36,7 @@
 }
 
 .postwrapper.animate {
-    transition: transform ease-in-out 400ms;
+    transition: transform ease-in-out var(--def-gallery-transition-speed);
 }
 
 .postgallery .arrow {
@@ -52,7 +52,7 @@
     backdrop-filter: blur(2px);
     padding: calc(0.5 * var(--def-spacing));
     position: absolute;
-    transition: opacity 500ms ease;
+    transition: opacity var(--def-gallery-transition-speed) ease;
     top: 50%;
     transform: translateY(- var(--arrow-size));
     z-index: 10;

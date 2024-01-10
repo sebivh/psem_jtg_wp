@@ -311,6 +311,20 @@
         "section": "sec_locationstyle",
         "print": false,
         "type": "checkbox"
+    },
+    {
+        "handle": "def-gallery-transition-speed",
+        "default": "500",
+        "outputSuffix": "ms",
+        "label": "Gallery Animations Geschwindigkeit",
+        "description": "Geschwindigkeit der Animationen in Millisekunden",
+        "section": "sec_gallarystyle",
+        "type": "range",
+        "range": {
+            "min": 0,
+            "max": 2000,
+            "step": 100
+        }
     }
 
 ]
