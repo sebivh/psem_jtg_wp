@@ -2,6 +2,7 @@
 /**
  * Main Themes php, the lowest point in the hierarchy, every thing leads here
  */
+//echo header
 get_header();
 
 $i = 0;

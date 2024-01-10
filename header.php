@@ -6,7 +6,7 @@ wp_enqueue_script('header-script');
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
     <head>
-        <?php   
+        <?php
         wp_head();
         ?>
         <title><? echo get_bloginfo('name') ?></title>
@@ -48,12 +48,17 @@ wp_enqueue_script('header-script');
         </nav>
             <?php
 /* Site Logo using Custom Logo or Site Title */
+/**
+ * Include the Page Hero consisting of a Picture and the Website Title
+ */
 echo "<a class='hero' href='" . home_url() . "'>".PHP_EOL;
+// If no Custom Logo is defined, then just print the Title
 if(has_custom_logo()){
     $custom_logo_image_url = wp_get_attachment_image_src(get_theme_mod( 'custom_logo' ) , 'full' );
 
     echo "<img src='" , $custom_logo_image_url[0] , "' alt= 'Custom Logo'>".PHP_EOL;
 } else {
+    // If a Site Fav Icon is defined, include that in the Hero
     if(has_site_icon()) {
         echo "<img src='". get_site_icon_url() ."' alt= 'Website Icon'>".PHP_EOL;
     }
