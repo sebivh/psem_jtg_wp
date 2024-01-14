@@ -33,6 +33,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    pointer-events: none;
 }
 
 .postwrapper.animate {
@@ -57,6 +58,7 @@
     transform: translateY(- var(--arrow-size));
     z-index: 10;
     pointer-events: all;
+    cursor: pointer;
 }
 
 .postgallery .arrow img {
@@ -79,4 +81,12 @@
 
 .postgallery .right {
     right: calc(0.5 * var(--def-spacing));
+}
+
+@media screen and (min-width: 1200px) {
+    .postwrapper .post-card {
+        pointer-events: none;
+        z-index: 10;
+        cursor: pointer;
+    }
 }
