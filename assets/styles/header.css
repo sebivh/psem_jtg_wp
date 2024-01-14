@@ -55,6 +55,12 @@ nav .menu-navbar-container {
     box-sizing: border-box;
     overflow-y: scroll;
     pointer-events: all;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.menu-navbar-container::-webkit-scrollbar {
+    display: none;
 }
 
 nav .menu-navbar-container.active {
@@ -207,7 +213,7 @@ nav .burger.active .burger-ln:nth-child(2) {
         transition: unset;
         transform: translateX(0);
         border-radius: unset;
-        overflow: hidden;
+        /*overflow: hidden;*/
         border-top-right-radius: calc(var(--def-border-radius) * 2);
         border-bottom-right-radius: calc(var(--def-border-radius) * 2);
     }
