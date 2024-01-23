@@ -134,4 +134,15 @@ class Menu_With_Description extends Walker_Nav_Menu {
  
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
-}	
+}
+
+/**
+ * Adds Ability to Upload SVG Files (mainly for the Hero Logo)
+ */
+function add_file_types_to_uploads($file_types){
+    $new_filetypes = array();
+    $new_filetypes['svg'] = 'image/svg+xml';
+    $file_types = array_merge($file_types, $new_filetypes );
+    return $file_types;
+    }
+    add_filter('upload_mimes', 'add_file_types_to_uploads');
