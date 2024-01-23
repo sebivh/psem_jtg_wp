@@ -313,6 +313,20 @@
         "type": "checkbox"
     },
     {
+        "handle": "def-location-paragraph-width",
+        "default": "100",
+        "outputSuffix": "%",
+        "label": "Absatz Breite",
+        "description": "Die Breite eines allein Stehenden Paragraphen im Verhältnis zu den restlichen Seiten Elementen",
+        "section": "sec_locationstyle",
+        "type": "range",
+        "range": {
+            "min": 50,
+            "max": 100,
+            "step": 10
+        }
+    },
+    {
         "handle": "def-gallery-transition-speed",
         "default": "500",
         "outputSuffix": "ms",

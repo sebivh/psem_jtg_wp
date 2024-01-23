@@ -78,5 +78,5 @@ body .cover {
 }
 
 .site-content-container>p {
-    width: 80%;
+    width: var(--def-location-paragraph-width);
 }
