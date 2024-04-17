@@ -30,9 +30,14 @@ function setup_controlls( WP_Customize_Manager $wp_customize) {
 			case 'range':
 				createRangeControll($wp_customize, $controll);
 				break;
-
-			default:
+			case 'textarea':
 				createTextareaControll($wp_customize, $controll);
+				break;
+			case 'checkbox':
+				createCheckboxControll($wp_customize, $controll);
+				break;
+			default:
+				createDefaultControll($wp_customize, $controll);
 				break;
 		}
 	}
@@ -40,6 +45,24 @@ function setup_controlls( WP_Customize_Manager $wp_customize) {
 
 function createTextareaControll( WP_Customize_Manager $wp_customize, $controll) {
 	$wp_customize->add_control( 'con-' . $controll->handle, array(
+		'type' => 'textarea',
+		'label' => $controll->label,
+		'description' => $controll->description,
+		'section' => $controll->section,
+		'settings' => 'set-' . $controll->handle,
+	));
+}
+function createDefaultControll( WP_Customize_Manager $wp_customize, $controll) {
+	$wp_customize->add_control( 'con-' . $controll->handle, array(
+		'label' => $controll->label,
+		'description' => $controll->description,
+		'section' => $controll->section,
+		'settings' => 'set-' . $controll->handle,
+	));
+}
+function createCheckboxControll( WP_Customize_Manager $wp_customize, $controll) {
+	$wp_customize->add_control( 'con-' . $controll->handle, array(
+		'type' => 'checkbox',
 		'label' => $controll->label,
 		'description' => $controll->description,
 		'section' => $controll->section,
@@ -92,6 +115,26 @@ function setup_sections( WP_Customize_Manager $wp_customize ) {
 		'description' => 'Bearbeite allgemeine Einstellungen zur Übersichtskarte',
 		'priority' => 40,
 	));
+	$wp_customize->add_section('sec_audio', array(
+		'title' => 'Audio Player',
+		'description' => 'Bearbeite Einstellungen zu Individuellem Audio Player der Website',
+		'priority' => 40,
+	));
+	$wp_customize->add_section('sec_poststyle', array(
+		'title' => 'Beiträgs Seiten Stiel',
+		'description' => 'Bearbeite das Aussehen der Beitragseiten.',
+		'priority' => 40,
+	));
+	$wp_customize->add_section('sec_locationstyle', array(
+		'title' => 'Orts Seiten Stil',
+		'description' => 'Bearbeite das Aussehen der Ortsseiten.',
+		'priority' => 40,
+	));
+	$wp_customize->add_section('sec_gallarystyle', array(
+		'title' => 'Gallery Stiel',
+		'description' => 'Bearbeite das Aussehen der Gallery.',
+		'priority' => 40,
+	));
 }
 //================USER SELECTED CSS Variables====================
 add_action('wp_head', 'generateCSSVariables');
@@ -113,14 +156,16 @@ function generateCSSVariables() {
 
 	//Prints all Controll in CSS
 	foreach ($controlls as $controll) {
-
-		$output = get_theme_mod('set-' . $controll->handle, $controll->default);
-
-		if( ! is_null($controll->outputSuffix)) {
-			$output .= $controll->outputSuffix;
+		//Only output Var as CSS if CSS is not set to false
+		if(is_null($controll->print) || $controll->print == true) {
+			$output = get_theme_mod('set-' . $controll->handle, $controll->default);
+	
+			if( ! is_null($controll->outputSuffix)) {
+				$output .= $controll->outputSuffix;
+			}
+	
+			echo '--' . $controll->handle . ':' . $output . ';' . PHP_EOL;
 		}
-
-		echo '--' . $controll->handle . ':' . $output . ';' . PHP_EOL;
 	}
 	
 	echo '}' . PHP_EOL;

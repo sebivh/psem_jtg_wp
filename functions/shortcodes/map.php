@@ -71,10 +71,10 @@ function generate_js_structure(string $injection, $interactive, $overwrite_addre
     }
 
 
-    $o = '<!-- Loaded Cities to display -->' . PHP_EOL;
+    $o = '<!-- Loaded Cities to display in dropdown-->' . PHP_EOL;
     $o .= '
     <script>
-        var cities = ' . get_theme_mod('set-map-selectable-cities', '[{"title":"Passau", "address":"[48.57390609055261, 13.460523755393428]"}]') . ';
+        var cities = ' . get_theme_mod('set-map-selectable-cities') . ';
     </script>
     <!-- Loaded Post Data-->
     <script>
@@ -105,6 +105,8 @@ function generate_js_structure(string $injection, $interactive, $overwrite_addre
         const interactive = JSON.parse(' . json_encode($interactive) . ');
         const overwriteAddress = ' . $overwrite_address . ';
         const overwriteZoom = ' . $overwrite_zoom . ';
+        const compassSize = ' . get_theme_mod("set-map-location-arrow-size") . ';
+        const markerFactor = ' . get_theme_mod("set-map-marker-size") . ';
 
         ' . $injection . '
         </script>

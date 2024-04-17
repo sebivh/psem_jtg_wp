@@ -1,5 +1,4 @@
-[
-    {
+[{
         "handle": "def-spacing",
         "default": "25px",
         "label": "Standard Spacing",
@@ -20,8 +19,21 @@
         "default": "1rem",
         "label": "Normale Text Größe",
         "description": "Die Größe die der Normale Text auf der Seite hat",
-        "section": "sec_text",
-        "type": "textarea"
+        "section": "sec_text"
+    },
+    {
+        "handle": "def-font-size-h1",
+        "default": "2em",
+        "label": "Text Größe von H1 Überschriften",
+        "description": "",
+        "section": "sec_text"
+    },
+    {
+        "handle": "def-line-height-h1",
+        "default": "1em",
+        "label": "Zeilen Abstand von H1 Überschriften",
+        "description": "",
+        "section": "sec_text"
     },
     {
         "handle": "def-link-color",
@@ -48,6 +60,27 @@
         "type": "color"
     },
     {
+        "handle": "def-desktop-left-margin",
+        "default": "25",
+        "outputSuffix": "svw",
+        "label": "Größe des Menüs im Desktop Modus",
+        "description": "Beschreibt wieviel Prozent des Horizontalen Bildschirms vom Desktop Menü auf der Linen Seite eingenommen werden soll",
+        "section": "sec_pagestyle",
+        "type": "range",
+        "range": {
+            "min": 1,
+            "max": 100,
+            "step": 5
+        }
+    },
+    {
+        "handle": "def-site-container-padding",
+        "default": "10px",
+        "label": "Spaltmaße Inhalts-Kasten",
+        "description": "Beschreibt die Spaltmaße die zwischen Inhalt und Inhalts Container",
+        "section": "sec_pagestyle"
+    },
+    {
         "handle": "nav-burger-size",
         "default": "1",
         "label": "Burger Größe",
@@ -55,8 +88,8 @@
         "section": "sec_nav",
         "type": "range",
         "range": {
-            "min": 1,
-            "max": 10,
+            "min": 0.25,
+            "max": 5,
             "step": 0.25
         }
     },
@@ -101,12 +134,49 @@
         "type": "color"
     },
     {
+        "handle": "nav-hero-title-color",
+        "default": "#000000",
+        "label": "Hero Text Farbe",
+        "description": "Farbe des Titels im Seiten Hero",
+        "section": "sec_nav",
+        "type": "color"
+    },
+    {
+        "handle": "nav-hero-title-font-size",
+        "default": "2",
+        "outputSuffix": "rem",
+        "label": "Hero Textgröße",
+        "description": "Größe des Titels im Seiten Hero",
+        "section": "sec_nav",
+        "type": "range",
+        "range": {
+            "min": 0.25,
+            "max": 10,
+            "step": 0.25
+        }
+    },
+    {
+        "handle": "nav-hero-logo-height",
+        "default": "4",
+        "outputSuffix": "rem",
+        "label": "Hero Logo Höhe",
+        "description": "Höhe des Logos im Seiten Hero",
+        "section": "sec_nav",
+        "type": "range",
+        "range": {
+            "min": 1,
+            "max": 20,
+            "step": 1
+        }
+    },
+    {
         "handle": "map-marker-size",
         "default": "1.5",
         "label": "Map Marker Größe",
         "description": "",
         "section": "sec_map",
         "type": "range",
+        "print": false,
         "range": {
             "min": 1,
             "max": 10,
@@ -116,7 +186,7 @@
     {
         "handle": "map-controlls-size",
         "default": "2",
-        "label": "Conrtoll Size",
+        "label": "Control Size",
         "description": "",
         "section": "sec_map",
         "type": "range",
@@ -133,6 +203,7 @@
         "description": "",
         "section": "sec_map",
         "type": "range",
+        "print": false,
         "range": {
             "min": 1,
             "max": 10,
@@ -140,10 +211,11 @@
         }
     },
     {
-        "handle": "set-map-selectable-cities",
-        "default": "[{\"title\":\"Passau\", \"address\":\"[48.57390609055261, 13.460523755393428]\"}]",
+        "handle": "map-selectable-cities",
+        "default": "[\n\t{\n\t\"title\":\"Passau\",\n\t\"address\":[48.57390609055261, 13.460523755393428]\n\t}\n]",
         "label": "Selectable Städte",
-        "description": "",
+        "description": "Json String der die in der Karte rechts oben im Dropdown verfügbaren Orten definiert. Jedes Objekt des Array muss ein String objekt 'title' und Array Objekt 'address' enthalten. ",
+        "print": false,
         "section": "sec_map",
         "type": "textarea"
     },
@@ -160,5 +232,113 @@
             "max": 50,
             "step": 5
         }
+    },
+    {
+        "handle": "def-audio-play-pause-size",
+        "default": "1",
+        "label": "Audio: Größe Play/Pause",
+        "description": "Passe die Breite des Play/Pause Knopfes des Audio Players an",
+        "section": "sec_audio",
+        "type": "range",
+        "range": {
+            "min": 0.25,
+            "max": 5,
+            "step": 0.25
+        }
+
+    },
+    {
+        "handle": "def-audio-distance-timeline",
+        "default": "20",
+        "outputSuffix": "px",
+        "label": "Audio: Abstand zur Timeline",
+        "description": "Passe den Abstand des Play/Pause zu der Timeline des Audio Players an",
+        "section": "sec_audio",
+        "type": "range",
+        "range": {
+            "min": 1,
+            "max": 400,
+            "step": 10
+        }
+    },
+    {
+        "handle": "def-audio-control-color",
+        "default": "#000000",
+        "label": "Audio Control Color",
+        "description": "Passe die Farbe der Controls des Audio Players an",
+        "section": "sec_audio",
+        "type": "color"
+    },
+    {
+        "handle": "def-post-max-image-height",
+        "default": "100",
+        "outputSuffix": "svh",
+        "label": "Maximale Bilder Höhe",
+        "description": "Beschreibt wie Viel Prozent des Vertikalen Bildschirms Maximal von einem Bild eingenommen werden darf",
+        "section": "sec_poststyle"
+    },
+    {
+        "handle": "def-location-cover-height",
+        "default": "100",
+        "outputSuffix": "svh",
+        "label": "Maximale Bilder Höhe",
+        "description": "Beschreibt wie Viel Prozent des Vertikalen Bildschirms Maximal von dem Cover Bild eingenommen werden darf",
+        "section": "sec_locationstyle"
+    },
+    {
+        "handle": "def-location-show-cover",
+        "default": true,
+        "label": "Location Cover",
+        "description": "Orts Vorschaubild über dem Artikel anzeigen?",
+        "section": "sec_locationstyle",
+        "print": false,
+        "type": "checkbox"
+    },
+    {
+        "handle": "def-location-show-address",
+        "default": true,
+        "label": "Location Adressen",
+        "description": "Adressen unter den Ortsseiten anzeigen?",
+        "section": "sec_locationstyle",
+        "print": false,
+        "type": "checkbox"
+    },
+    {
+        "handle": "def-location-show-gallery",
+        "default": true,
+        "label": "Location Beitrags Galerie",
+        "description": "Galerie unter den Ortsseiten anzeigen?",
+        "section": "sec_locationstyle",
+        "print": false,
+        "type": "checkbox"
+    },
+    {
+        "handle": "def-location-paragraph-width",
+        "default": "100",
+        "outputSuffix": "%",
+        "label": "Absatz Breite",
+        "description": "Die Breite eines allein Stehenden Paragraphen im Verhältnis zu den restlichen Seiten Elementen",
+        "section": "sec_locationstyle",
+        "type": "range",
+        "range": {
+            "min": 50,
+            "max": 100,
+            "step": 10
+        }
+    },
+    {
+        "handle": "def-gallery-transition-speed",
+        "default": "500",
+        "outputSuffix": "ms",
+        "label": "Gallery Animations Geschwindigkeit",
+        "description": "Geschwindigkeit der Animationen in Millisekunden",
+        "section": "sec_gallarystyle",
+        "type": "range",
+        "range": {
+            "min": 0,
+            "max": 2000,
+            "step": 100
+        }
     }
+
 ]

@@ -35,6 +35,7 @@ body .cover {
 .cover img {
     width: 100%;
     height: 100%;
+    max-height: var(--def-location-cover-height);
     border-radius: var(--def-border-radius);
 }
 
@@ -76,5 +77,5 @@ body .cover {
 }
 
 .site-content-container>p {
-    width: 80%;
+    width: var(--def-location-paragraph-width);
 }

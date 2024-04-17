@@ -20,12 +20,12 @@ nav {
 
 .hero span {
     text-decoration: none;
-    font-size: 2rem;
-    color: black
+    font-size: var(--nav-hero-title-font-size);
+    color: var(--nav-hero-title-color)
 }
 
 .hero img {
-    height: 4rem;
+    height: var(--nav-hero-logo-height);
 }
 
 nav {
@@ -55,6 +55,12 @@ nav .menu-navbar-container {
     box-sizing: border-box;
     overflow-y: scroll;
     pointer-events: all;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.menu-navbar-container::-webkit-scrollbar {
+    display: none;
 }
 
 nav .menu-navbar-container.active {
@@ -203,11 +209,11 @@ nav .burger.active .burger-ln:nth-child(2) {
         max-height: unset;
         max-width: unset;
         height: 100vh;
-        width: 25svw;
+        width: var(--def-desktop-left-margin);
         transition: unset;
         transform: translateX(0);
         border-radius: unset;
-        overflow: hidden;
+        /*overflow: hidden;*/
         border-top-right-radius: calc(var(--def-border-radius) * 2);
         border-bottom-right-radius: calc(var(--def-border-radius) * 2);
     }

@@ -40,19 +40,38 @@ function setUpGallery() {
         }
         //Handlers for Mouse Support
     gallery.onmousedown = function(e) {
-        mouseDown = true;
-        startGalleryManipulation(e.screenX);
+        //Check for left Mouse Button
+        if (e.button == 0) {
+            mouseDown = true;
+            startGalleryManipulation(e.screenX);
+        }
     }
     document.onmousemove = function(e) {
         if (mouseDown)
             updateGalleryManipulation(e.screenX);
     }
-    document.onmouseup = function() {
-        mouseDown = false;
-        stopGalleryManipulation();
+    document.onmouseup = function(e) {
+        if (mouseDown) {
+            mouseDown = false;
+            //Check if Mose has moved since click
+            if (change != 0) {
+                //If so, Gallery has been Manipulated and needs to be Changed accordingly
+                stopGalleryManipulation();
+            } else {
+                //In any other Case, it could be User tried to click on the Post Card trying to Navigate
+                //If the User clicked on the Picture in the Arrows, he didn't try to follow the post Card link, so don't do anything
+                //If this isn't the Case, redirect the User to the Post of the Card by clicking it, like intended
+                //Also checks if the Click is on the Gallery
+                if (e.target == gallery && !(e.target == rightArrow.querySelector('img') || e.target == leftArrow.querySelector('img')))
+                    posts[currentPost].click();
+            }
+        }
     }
 }
 
+/**
+ * In order for the Gallery to be shown right when loading the Page, this initial call needs to happen!
+ */
 registerOnComplete(function() {
     //First adjust
     stopGalleryManipulation();
@@ -63,12 +82,21 @@ var manipulationXorigin = 0;
 var center = 0;
 var change = 0;
 
+/**
+ * Funktion that registers all necessary Information to start the Manipulation
+ * Also turns all Animations on the Postcard Wrapper off so it follows the Mouse nicely
+ * @param {*} screenX The Screen Position of the Interaktion
+ */
 function startGalleryManipulation(screenX) {
     manipulationXorigin = screenX;
     change = 0;
     wrapper.classList.remove('animate');
 }
 
+/**
+ * Calculates the Distance the Mouse Moved on the X-Axis and adjusts the Wrapper accordingly
+ * @param {*} screenX The Screen Position of the Interaktion
+ */
 function updateGalleryManipulation(screenX) {
     change += screenX - manipulationXorigin;
     manipulationXorigin = screenX;
@@ -77,7 +105,9 @@ function updateGalleryManipulation(screenX) {
     wrapper.style.transform = 'translateX(' + manipulator + 'px' + ')';
 }
 
-
+/**
+ * Sets the new aktive Post and turns on Animations again
+ */
 function stopGalleryManipulation() {
     if (change < -(gallery.getBoundingClientRect().width / 8)) {
         currentPost++;

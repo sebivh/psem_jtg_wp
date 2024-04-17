@@ -63,7 +63,6 @@ function setUpMap() {
     //Add if Interactive
     if (interactive) {
         //Set Up User Position Controlls
-        var compassSize = getCssVar('--map-location-arrow-size');
         L.control.locate({
             flyTo: true,
             keepCurrentZoomLevel: true,
@@ -94,7 +93,15 @@ function setUpMap() {
         //Add Dropdown City Selector
         var selectorHTML = '<div class="leaflet-bar leaflet-control"><select class="citySelector leaflet-bar-part leaflet-bar-part-single">';
         cities.forEach(city => { //PHP injected Array of all Selectable Cities
-            selectorHTML += '<option value="' + city.address + '">' + city.title + '</option>'
+
+            //Validate City.address
+            if (!Array.isArray(city.address)) {
+                //Try to convert using OpenStreetMap API
+                apiAddress = convertAddress(city.address);
+                city.address = [apiAddress['lat'], apiAddress['lon']];
+            }
+            //Add to Dropdown
+            selectorHTML += '<option value="[' + city.address[0] + "," + city.address[1] + ']">' + city.title + '</option>';
         });
         selectorHTML += '</select></div>';
 
@@ -178,7 +185,6 @@ function convertAddress(address) {
  */
 function createMarker(position, coordinates, style, title, url) {
     //Create Marker Icon
-    var markerFactor = getCssVar('--map-marker-size');
     var markerSize = [27 * markerFactor, 32 * markerFactor];
     var styleUrl = 'default';
     if (style != '') {

@@ -1,11 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <!-- Created with Vectornator (http://vectornator.io/) -->
-<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1024 1024" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
-<defs/>
-<g id="Ebene-2" vectornator:layerName="Ebene 2">
-<path d="M0 512C0 229.23 229.23 5.68434e-14 512 5.68434e-14C794.77 5.68434e-14 1024 229.23 1024 512C1024 794.77 794.77 1024 512 1024C229.23 1024 0 794.77 0 512Z" fill="#a74538" fill-rule="nonzero" opacity="1" stroke="none"/>
-<path d="M246.393 220.363L773.607 739.637" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="32.0822"/>
-<path d="M773.607 220.363L246.393 739.637" fill="none" opacity="1" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="32.0822"/>
-</g>
+
+<svg
+   height="100%"
+   stroke-miterlimit="10"
+   style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
+   version="1.1"
+   viewBox="0 0 1024 1024"
+   width="100%"
+   xml:space="preserve"
+   id="svg11"
+   sodipodi:docname="error.svg"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:vectornator="http://vectornator.io"><sodipodi:namedview
+   id="namedview13"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   showgrid="false"
+   inkscape:zoom="0.66245342"
+   inkscape:cx="357.00623"
+   inkscape:cy="451.35249"
+   inkscape:window-width="1920"
+   inkscape:window-height="1027"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Ebene-2" />
+<defs
+   id="defs2" />
+<g
+   id="Ebene-2"
+   vectornator:layerName="Ebene 2">
+<path
+   d="M0 512C0 229.23 229.23 5.68434e-14 512 5.68434e-14C794.77 5.68434e-14 1024 229.23 1024 512C1024 794.77 794.77 1024 512 1024C229.23 1024 0 794.77 0 512Z"
+   fill="#a74538"
+   fill-rule="nonzero"
+   opacity="1"
+   stroke="none"
+   id="path4" />
+
+<path
+   d="M 775.607,270.363 248.393,789.637"
+   fill="none"
+   opacity="1"
+   stroke="#ffffff"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   stroke-width="32.0822"
+   id="path8" />
+<path
+   d="M 248.393,270.363 775.607,789.637"
+   fill="none"
+   opacity="1"
+   stroke="#ffffff"
+   stroke-linecap="round"
+   stroke-linejoin="round"
+   stroke-width="32.0822"
+   id="path6" /></g>
 </svg>

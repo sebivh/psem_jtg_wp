@@ -50,16 +50,25 @@ include_once('functions/shortcodes/characteristic.php');
  */
 include_once('functions/audio.php');
 
+/**
+ * Styles that are included on every Page
+ */
 function enqueue_styles() {
 	wp_enqueue_style("main-style");
 }
 add_action("wp_enqueue_scripts", "enqueue_styles");
 
+/**
+ * Scripts that are included on every Page
+ */
 function enqueue_scripts() {
 	wp_enqueue_script('jtg-script');
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 
+/**
+ * Sets up main Theme functionality like Menu and Theme Supports, see Wordpress dev documentation
+ */
 function setup_theme() {
 	register_nav_menus(
 		array(
@@ -76,14 +85,15 @@ add_action("after_setup_theme", "setup_theme");
 add_filter('acf/settings/remove_wp_meta_box', '__return_false');
 
 
-//Show Post Id Collum
+/**
+ * Show the Post ID of Posts in the Admin Dashboard
+ */
 function add_column( $columns ){
 	$columns['post_id_clmn'] = 'ID'; // $columns['Column ID'] = 'Column Title';
 	return $columns;
 }
 add_filter('manage_posts_columns', 'add_column', 5);
 
-//Show Post ID
 function column_content( $column, $id ){
 	if( $column === 'post_id_clmn')
 		echo $id;
@@ -124,4 +134,15 @@ class Menu_With_Description extends Walker_Nav_Menu {
  
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
     }
-}	
+}
+
+/**
+ * Adds Ability to Upload SVG Files (mainly for the Hero Logo)
+ */
+function add_file_types_to_uploads($file_types){
+    $new_filetypes = array();
+    $new_filetypes['svg'] = 'image/svg+xml';
+    $file_types = array_merge($file_types, $new_filetypes );
+    return $file_types;
+    }
+    add_filter('upload_mimes', 'add_file_types_to_uploads');
