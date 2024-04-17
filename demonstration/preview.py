@@ -207,7 +207,7 @@ elif(inpuD == "2"):
 elif(inpuD == "3"):
     driver = webdriver.Safari()
 else:
-    print("Error: '{}' is not a Valid Input".format(inpu))
+    print("Error: '{}' is not a Valid Input".format(input))
     exit
 
 #Front Page
@@ -237,7 +237,7 @@ driver.fullscreen_window()
 while(True):
 
     #Show Front Page
-    frontPage(page_dur, driver)
+    #frontPage(page_dur, driver)
 
     #Show Map
     map_page(15, driver)
