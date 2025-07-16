@@ -157,10 +157,10 @@ function generateCSSVariables() {
 	//Prints all Controll in CSS
 	foreach ($controlls as $controll) {
 		//Only output Var as CSS if CSS is not set to false
-		if(is_null($controll->print) || $controll->print == true) {
+		if(!property_exists($controll, 'print') || $controll->print == true) {
 			$output = get_theme_mod('set-' . $controll->handle, $controll->default);
 	
-			if( ! is_null($controll->outputSuffix)) {
+			if( property_exists($controll, 'outputSuffix')) {
 				$output .= $controll->outputSuffix;
 			}
 	

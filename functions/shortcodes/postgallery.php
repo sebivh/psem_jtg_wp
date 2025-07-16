@@ -8,6 +8,7 @@ function postgallery_shortcode($atts = [], $content = null, $tag = ''){
 	wp_enqueue_style('component-postGallery-style');
 	wp_enqueue_script('component-postGallery-script');
 	//Open Gallery
+	$o = '';
 	$o .= '<div class="postgallery">' . PHP_EOL;
 	$arrowPath = get_theme_file_uri('assets/pictures/arrow.svg');
 	$o .= "\t" . '<button class="arrow right" aria-label="Left Arrow" aria-expanded="true"><img src="' . $arrowPath . '" alt=">"></button>' . PHP_EOL;
