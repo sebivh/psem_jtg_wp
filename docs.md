@@ -20,6 +20,7 @@ _Autor:_ Sebastian von Helmersen | [sebivhelm@hotmail.com](mailto:sebivhelm@hotm
     - [Custom Theme: jtg WordPress Theme](#custom-theme-jtg-wordpress-theme)
       - [Orte](#orte)
       - [Design Customizor](#design-customizor)
+      - [Demonstration-Skripte](#demonstration-skripte)
     - [Plugins](#plugins)
     - [Shortcodes](#shortcodes)
     - [QR-Codes / Tafeln](#qr-codes--tafeln)
@@ -84,6 +85,9 @@ Es wird unterstützt, dass Orte mehr als nur eine Adresse besitzen. Diese werden
 #### Design Customizor
 Der Design Customizor ist ein WordPress Feature, das es ermöglicht das Design der Website anzupassen. Hier können Farben, Schriftarten und andere Designelemente angepasst werden. Es ist wichtig zu beachten das diese Änderungen nur für das aktuell ausgewählte Theme gelten. Das jtg WordPress Theme hat bereits einige Voreinstellungen die für die Jüdisch to go Website optimiert sind, fügt aber auch viele eigene hinzu. Es wird empfohlen bei Anzeigefehlern erst hier Einstellungen vorzunehmen.
 
+#### Demonstration-Skripte
+Inhalt des Themes ist auch ein Python Skript im Ordner `./demonstration`. Dieses diente dazu die Website auf Ausstellungen zu demonstrieren. Bei Ausführung wählt es zufällige Beiträge oder Seiten aus und zeigt diese indem es langsam durch den Inhalt Scrollt. Es ist außerdem möglich das Scrollen mit der ersten Audiodatei der Seite zu synchronisieren.  
+Das Skript erfüllt keine Funktion auf der Website selbst und dient wie beschrieben nur Demonstrationszwecken.
 
 ### Plugins
 Die Website verwendet eigene Plugins die entweder die Benutzung oder die Erfahrung verbessern. Im Folgenden wird kurz beschrieben, wofür welche Plugins verwendet werden und inwiefern diese relevant für Funktionen der Website sind.
